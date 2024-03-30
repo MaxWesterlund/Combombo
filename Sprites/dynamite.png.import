@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsoqn2mt0h3xa"
-path="res://.godot/imported/bomb_circle.png-0d03137bc68d189473b81a72b7e92ce7.ctex"
+uid="uid://grtdbfxtxjhy"
+path="res://.godot/imported/dynamite.png-c7c86ba3fc1fd4d4e77a527ae5a77c0a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://bomb_circle.png"
-dest_files=["res://.godot/imported/bomb_circle.png-0d03137bc68d189473b81a72b7e92ce7.ctex"]
+source_file="res://Sprites/dynamite.png"
+dest_files=["res://.godot/imported/dynamite.png-c7c86ba3fc1fd4d4e77a527ae5a77c0a.ctex"]
 
 [params]
 
