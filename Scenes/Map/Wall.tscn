@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://div56vd7ivikf"]
+
+[ext_resource type="Texture2D" uid="uid://nnt16nhk6r7s" path="res://Sprites/wall.png" id="1_hnaon"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iqp73"]
+
+[node name="Wall" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_hnaon")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(3.2, 3.2)
+shape = SubResource("RectangleShape2D_iqp73")

@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://chs0dpfphsi52"]
+
+[node name="MapGenerator" type="Node"]
