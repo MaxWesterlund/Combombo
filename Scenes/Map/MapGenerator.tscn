@@ -1,3 +1,7 @@
-[gd_scene format=3 uid="uid://chs0dpfphsi52"]
+[gd_scene load_steps=2 format=3 uid="uid://chs0dpfphsi52"]
+
+[ext_resource type="Script" path="res://Scenes/Map/map_generator.gd" id="1_ph1xh"]
 
 [node name="MapGenerator" type="Node"]
+script = ExtResource("1_ph1xh")
+image_path = "res://Levels/test_level.png"
