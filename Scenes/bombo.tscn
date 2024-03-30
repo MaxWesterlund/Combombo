@@ -1,13 +1,24 @@
 [gd_scene load_steps=3 format=3 uid="uid://cesb20ykxb25l"]
 
 [ext_resource type="Script" path="res://Scenes/bombo.gd" id="1_36r6p"]
-[ext_resource type="Texture2D" uid="uid://bsoqn2mt0h3xa" path="res://bomb_circle.png" id="1_gnhb3"]
+[ext_resource type="Texture2D" uid="uid://grtdbfxtxjhy" path="res://Sprites/dynamite.png" id="2_j1ka7"]
 
 [node name="Bombo" type="Node2D"]
 script = ExtResource("1_36r6p")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("1_gnhb3")
+texture = ExtResource("2_j1ka7")
 
 [node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="LineEdit" type="LineEdit" parent="."]
+offset_left = -34.0
+offset_top = -47.0
+offset_right = 33.0625
+offset_bottom = -16.0
+text = "1.0"
+
+[node name="FadeTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

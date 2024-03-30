@@ -1,15 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://bvoqjs6mnrhpo"]
+[gd_scene load_steps=3 format=3 uid="uid://bvoqjs6mnrhpo"]
 
 [ext_resource type="PackedScene" uid="uid://cnyltcixmksrr" path="res://Scenes/player.tscn" id="1_eabme"]
+[ext_resource type="Script" path="res://Scenes/bombSpawner.gd" id="2_iy5b7"]
 
 [node name="Main" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_eabme")]
 position = Vector2(561, 320)
 
-[node name="Button" type="Button" parent="." groups=["UI"]]
+[node name="AttackButton" type="Button" parent="." groups=["UI"]]
 offset_left = 73.0
 offset_top = 54.0
 offset_right = 141.0
 offset_bottom = 85.0
 text = "ATTACK"
+
+[node name="BombSpawner" type="Node2D" parent="."]
+script = ExtResource("2_iy5b7")
