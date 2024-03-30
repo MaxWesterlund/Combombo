@@ -4,6 +4,8 @@ extends Node
 
 var wall = preload("res://Scenes/Map/Wall.tscn")
 var ground = preload("res://Scenes/Map/Floor.tscn")
+var spawn = preload("res://Scenes/Map/Spawn.tscn")
+var goal = preload("res://Scenes/Map/Goal.tscn")
 
 func _ready():
 	var image = Image.new()
@@ -24,4 +26,8 @@ func tile_from_color(color) -> PackedScene:
 			return wall
 		Color(0, 1, 0, 1):
 			return ground
+		Color(1, 0, 1, 1):
+			return spawn
+		Color(1, 1, 0, 1):
+			return goal
 	return ground
