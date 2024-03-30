@@ -12,13 +12,14 @@ texture = ExtResource("2_j1ka7")
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
-[node name="LineEdit" type="LineEdit" parent="."]
-offset_left = -34.0
-offset_top = -47.0
-offset_right = 33.0625
-offset_bottom = -16.0
-text = "1.0"
-
 [node name="FadeTimer" type="Timer" parent="."]
 
+[node name="Label" type="Label" parent="."]
+offset_left = -19.0
+offset_top = -41.0
+offset_right = 21.0
+offset_bottom = -18.0
+text = "1...0"
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="FadeTimer" to="." method="_on_fade_timer_timeout"]
