@@ -6,3 +6,10 @@
 
 [node name="Player" parent="." instance=ExtResource("1_eabme")]
 position = Vector2(561, 320)
+
+[node name="Button" type="Button" parent="." groups=["UI"]]
+offset_left = 73.0
+offset_top = 54.0
+offset_right = 141.0
+offset_bottom = 85.0
+text = "ATTACK"
