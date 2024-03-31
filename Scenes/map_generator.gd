@@ -1,4 +1,4 @@
-extends Node
+extends TileMap
 
 @export var image_path = ""
 
@@ -9,28 +9,32 @@ var goal = preload("res://Scenes/Tiles/Goal.tscn")
 
 var bomb = preload("res://Scenes/Bombo.tscn")
 
+const TILE_COLOR = {
+	ground = Color(0, 1, 0, 1),
+	wall = Color(1, 0, 0, 1),
+	goal = Color(1, 1, 0, 1)
+}
+
 func _ready():
 	var image = Image.new()
 	image.load(image_path)
 	
-	var height = image.get_height()
-	var width = image.get_width()
+	var image_height = image.get_height()
+	var image_width = image.get_width()
+	
+	var level_size = Vector2i(image_width, image_height - 1)
 	var pp: Vector2
 	
-	for y in range(height - 1):
-		for x in range(width):
+	for y in range(level_size.y):
+		for x in range(level_size.x):
 			var color = image.get_pixel(x, y)
-			var tile = tile_from_color(color)
-			var instance = tile.instantiate()
-			var position = Vector2(x * 64 - width * 32 + 32, y * 64 - height * 32 + 32)
-			instance.position = position
-			add_child(instance)
+			set_cell(0, Vector2i(x, y) - level_size/2, 0, atlas_coords_from_color(color))
 			if color == Color(1, 0, 1, 1):
 				pp = position
 	var bomb_count = 0
 	var bombs = []
-	for x in range(width):
-		var color = image.get_pixel(x, height - 1)
+	for x in range(image_width):
+		var color = image.get_pixel(x, image_height - 1)
 		if color != Color(0, 0, 0, 0):
 			bombs.append(color.r + color.g + color.b)
 			
@@ -44,14 +48,14 @@ func _ready():
 	
 	get_node("/root/Main/Player").position = pp
 
-func tile_from_color(color) -> PackedScene:
+func atlas_coords_from_color(color) -> Vector2i:
 	match color:
-		Color(1, 0, 0, 1):
-			return wall
-		Color(0, 1, 0, 1):
-			return ground
-		Color(1, 0, 1, 1):
-			return spawn
-		Color(1, 1, 0, 1):
-			return goal
+		Color(1, 0, 0, 1): # wall
+			return Vector2i(2, 0)
+		Color(0, 1, 0, 1): # ground
+			return Vector2i(0, 0)
+		Color(1, 0, 1, 1): # spawn
+			return Vector2i(0, 0)
+		Color(1, 1, 0, 1): # goal
+			return Vector2i(1, 0)
 	return ground

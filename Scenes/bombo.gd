@@ -55,7 +55,7 @@ func can_reach_player():
 	
 	var space_state = get_world_2d().direct_space_state
 	
-	var query = PhysicsRayQueryParameters2D.create(position, pp, get_visibility_layer_bit(0))
+	var query = PhysicsRayQueryParameters2D.create(position, pp, collision_mask)
 	var result = space_state.intersect_ray(query)
 	
 	return !result

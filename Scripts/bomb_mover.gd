@@ -24,5 +24,6 @@ func handle_bomb_press(bomb: RigidBody2D):
 	bomb_moving.freeze = true
 
 func handle_bomb_release(bomb: RigidBody2D):
-	bomb_moving.freeze = false
-	bomb_moving = null
+	if bomb_moving != null:
+		bomb_moving.freeze = false
+		bomb_moving = null

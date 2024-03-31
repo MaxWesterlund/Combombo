@@ -5,8 +5,7 @@
 
 [node name="MapGenerator" type="TileMap"]
 tile_set = ExtResource("1_2wy6y")
+collision_visibility_mode = 1
 format = 2
-
-[node name="MapGenerator" type="Node" parent="."]
 script = ExtResource("1_ph1xh")
 image_path = "res://Levels/test_level.png"
