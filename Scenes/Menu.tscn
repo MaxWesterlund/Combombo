@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://bqp2e6mm7tpot"]
+[gd_scene load_steps=3 format=3 uid="uid://bqp2e6mm7tpot"]
 
+[ext_resource type="Script" path="res://Scenes/menu.gd" id="1_bk30g"]
 [ext_resource type="PackedScene" uid="uid://6ejmjpdq8ddv" path="res://Scenes/Button.tscn" id="1_dlj25"]
 
 [node name="Menu" type="Control"]
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_bk30g")
 
 [node name="Button" parent="." instance=ExtResource("1_dlj25")]
 layout_mode = 0
@@ -46,6 +48,8 @@ theme_override_constants/shadow_offset_y = 10
 theme_override_constants/outline_size = 1
 theme_override_font_sizes/font_size = 150
 text = "Combombo"
+
+[connection signal="pressed" from="Button/TextureButton" to="." method="_on_start_pressed"]
 
 [editable path="Button"]
 [editable path="Button2"]
