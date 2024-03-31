@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bvoqjs6mnrhpo"]
+[gd_scene load_steps=5 format=3 uid="uid://bvoqjs6mnrhpo"]
 
-[ext_resource type="PackedScene" uid="uid://cnyltcixmksrr" path="res://Scenes/player.tscn" id="1_eabme"]
-[ext_resource type="Script" path="res://Scenes/bombSpawner.gd" id="2_iy5b7"]
+[ext_resource type="PackedScene" uid="uid://cnyltcixmksrr" path="res://Scenes/Player.tscn" id="1_eabme"]
+[ext_resource type="Script" path="res://Scenes/attack_button.gd" id="2_g2qk1"]
+[ext_resource type="Script" path="res://Scenes/bomb_spawner.gd" id="2_iy5b7"]
+[ext_resource type="PackedScene" uid="uid://cesb20ykxb25l" path="res://Scenes/Bombo.tscn" id="3_dm3ml"]
 
 [node name="Main" type="Node2D"]
 
@@ -13,7 +15,17 @@ offset_left = 73.0
 offset_top = 54.0
 offset_right = 141.0
 offset_bottom = 85.0
+mouse_filter = 1
 text = "ATTACK"
+script = ExtResource("2_g2qk1")
 
 [node name="BombSpawner" type="Node2D" parent="."]
 script = ExtResource("2_iy5b7")
+
+[node name="Bombo2" parent="BombSpawner" instance=ExtResource("3_dm3ml")]
+position = Vector2(258, 152)
+
+[node name="Bombo" parent="BombSpawner" instance=ExtResource("3_dm3ml")]
+position = Vector2(295, 183)
+
+[connection signal="pressed" from="AttackButton" to="AttackButton" method="_on_pressed"]

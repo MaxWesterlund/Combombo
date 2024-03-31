@@ -1,14 +1,13 @@
 extends RigidBody2D
 
-@export var ground_friction = 0.0
-
 const max_distance_multiplier = 4
 
 func _ready():
-	linear_damp = ground_friction
 	Events.bomb_exploded.connect(add_explode_force)
+	Globals.player_position = position
 
 func _process(delta):
+	Globals.player_position = position
 	pass
 	#if Input.is_action_just_pressed("place_bomb"):
 		#var p = get_global_mouse_position()

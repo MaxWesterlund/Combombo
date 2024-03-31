@@ -10,7 +10,6 @@ radius = 65.3758
 mass = 70.0
 gravity_scale = 0.0
 script = ExtResource("1_k51hv")
-ground_friction = 2.4
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_0pd41")
