@@ -6,9 +6,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dmja3"]
 size = Vector2(58.694, 20)
 
-[node name="Bombo" type="StaticBody2D" groups=["Bombs"]]
+[node name="Bombo" type="RigidBody2D" groups=["Bombs"]]
 collision_layer = 2
 input_pickable = true
+gravity_scale = 0.0
 script = ExtResource("1_dqc76")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
