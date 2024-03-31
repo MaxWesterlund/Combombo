@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://bvoqjs6mnrhpo"]
 
 [ext_resource type="PackedScene" uid="uid://cnyltcixmksrr" path="res://Scenes/Player.tscn" id="1_eabme"]
-[ext_resource type="Script" path="res://Scenes/attack_button.gd" id="2_g2qk1"]
-[ext_resource type="Script" path="res://Scenes/bomb_spawner.gd" id="2_iy5b7"]
+[ext_resource type="Script" path="res://Scripts/attack_button.gd" id="2_g2qk1"]
+[ext_resource type="Script" path="res://Scripts/bomb_spawner.gd" id="2_iy5b7"]
 [ext_resource type="PackedScene" uid="uid://cesb20ykxb25l" path="res://Scenes/Bombo.tscn" id="3_dm3ml"]
-[ext_resource type="PackedScene" uid="uid://chs0dpfphsi52" path="res://Scenes/Map/MapGenerator.tscn" id="5_t57r2"]
-[ext_resource type="PackedScene" path="res://Scenes/MainCamera.tscn" id="6_tlvpa"]
+[ext_resource type="PackedScene" uid="uid://chs0dpfphsi52" path="res://Scenes/MapGenerator.tscn" id="5_t57r2"]
+[ext_resource type="PackedScene" uid="uid://bil1p3w5to756" path="res://Scenes/MainCamera.tscn" id="6_tlvpa"]
 
 [node name="Main" type="Node2D"]
 
