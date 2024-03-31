@@ -13,6 +13,7 @@ func _ready():
 	
 	var height = image.get_height()
 	var width = image.get_width()
+	var pp: Vector2
 	
 	for y in range(height):
 		for x in range(width):
@@ -22,8 +23,10 @@ func _ready():
 			var position = Vector2(x * 64 - width * 32 + 32, y * 64 - height * 32 + 32)
 			instance.position = position
 			add_child(instance)
+			if color == Color(1, 0, 1, 1):
+				pp = position
 	
-	Events.spawn_player.emit()
+	get_node("/root/Main/Player").position = pp
 
 func tile_from_color(color) -> PackedScene:
 	match color:

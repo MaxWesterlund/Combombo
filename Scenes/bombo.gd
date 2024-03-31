@@ -59,7 +59,7 @@ func can_reach_player():
 	var query = PhysicsRayQueryParameters2D.create(position, pp, get_visibility_layer_bit(0))
 	var result = space_state.intersect_ray(query)
 	
-	return result
+	return !result
 
 func _on_fade_timer_timeout():
 	queue_free()
