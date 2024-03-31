@@ -1,4 +1,4 @@
-extends Node2D
+extends RigidBody2D
 
 enum STATE {
 	IDLE,
@@ -54,7 +54,6 @@ func can_reach_player():
 	var d = position - pp
 	
 	var space_state = get_world_2d().direct_space_state
-	# use global coordinates, not local to node
 	
 	var query = PhysicsRayQueryParameters2D.create(position, pp, get_visibility_layer_bit(0))
 	var result = space_state.intersect_ray(query)
@@ -70,5 +69,3 @@ func _on_input_event(viewport, event: InputEvent, shape_idx):
 			Events.bomb_press.emit(self)
 		elif event.is_released():
 			Events.bomb_release.emit(self)
-	
-	pass # Replace with function body.
