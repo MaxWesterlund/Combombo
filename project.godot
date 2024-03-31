@@ -27,6 +27,10 @@ window/size/viewport_width=1280
 window/size/viewport_height=720
 window/size/resizable=false
 
+[dotnet]
+
+project/assembly_name="Combombo"
+
 [input]
 
 pick_bomb={

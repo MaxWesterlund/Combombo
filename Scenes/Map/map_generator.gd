@@ -28,16 +28,18 @@ func _ready():
 			if color == Color(1, 0, 1, 1):
 				pp = position
 	var bomb_count = 0
+	var bombs = []
 	for x in range(width):
 		var color = image.get_pixel(x, height - 1)
-		if color.a == 1.0:
-			bomb_count += 1
+		if color != Color(0, 0, 0, 0):
+			bombs.append(color.r + color.g + color.b)
 			
 	var individual = 40
 	var total = individual * bomb_count
-	for i in range(bomb_count):
+	for i in bombs:
 		var instance = bomb.instantiate()
-		instance.position = Vector2(-total/2.0 + i * individual, 400)
+		instance.explode_time = i
+		instance.position = Vector2(-total/2.0 * individual, 400)
 		add_child(instance)
 	
 	get_node("/root/Main/Player").position = pp

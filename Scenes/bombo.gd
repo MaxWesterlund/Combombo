@@ -43,7 +43,7 @@ func start_timer():
 
 func _on_timer_timeout():
 	if can_reach_player():
-		Events.bomb_exploded.emit(position, 1000000)
+		Events.bomb_exploded.emit(position, 5100009)
 	sprite.texture = explosion_texture
 	time_text.visible = false
 	state = STATE.EXPLODED
