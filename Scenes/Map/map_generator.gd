@@ -19,6 +19,8 @@ func _ready():
 			var position = Vector2(x * 64, y * 64)
 			instance.position = position
 			add_child(instance)
+	
+	Events.spawn_player.emit()
 
 func tile_from_color(color) -> PackedScene:
 	match color:

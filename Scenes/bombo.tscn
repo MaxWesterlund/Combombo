@@ -1,13 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://cesb20ykxb25l"]
+[gd_scene load_steps=4 format=3 uid="uid://cesb20ykxb25l"]
 
-[ext_resource type="Script" path="res://Scenes/bombo.gd" id="1_36r6p"]
-[ext_resource type="Texture2D" uid="uid://grtdbfxtxjhy" path="res://Sprites/dynamite.png" id="2_j1ka7"]
+[ext_resource type="Script" path="res://Scenes/bombo.gd" id="1_dqc76"]
+[ext_resource type="Texture2D" uid="uid://grtdbfxtxjhy" path="res://Sprites/dynamite.png" id="2_r4dto"]
 
-[node name="Bombo" type="Node2D"]
-script = ExtResource("1_36r6p")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dmja3"]
+size = Vector2(58.694, 20)
+
+[node name="Bombo" type="StaticBody2D" groups=["Bombs"]]
+collision_layer = 2
+input_pickable = true
+script = ExtResource("1_dqc76")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_j1ka7")
+texture = ExtResource("2_r4dto")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
@@ -19,7 +24,14 @@ offset_left = -19.0
 offset_top = -41.0
 offset_right = 21.0
 offset_bottom = -18.0
+mouse_filter = 1
 text = "1...0"
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.41586, -0.34515)
+rotation = -0.279253
+shape = SubResource("RectangleShape2D_dmja3")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="FadeTimer" to="." method="_on_fade_timer_timeout"]
