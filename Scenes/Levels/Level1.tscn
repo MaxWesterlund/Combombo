@@ -1,7 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://dq11smvlces01"]
+[gd_scene load_steps=3 format=3 uid="uid://dq11smvlces01"]
 
 [ext_resource type="PackedScene" uid="uid://chs0dpfphsi52" path="res://Scenes/Map/MapGenerator.tscn" id="1_3qsok"]
+[ext_resource type="PackedScene" uid="uid://bil1p3w5to756" path="res://Scenes/MainCamera.tscn" id="2_ssfuq"]
 
 [node name="Level1" type="Node2D"]
 
 [node name="MapGenerator" parent="." instance=ExtResource("1_3qsok")]
+
+[node name="MainCamera" parent="." instance=ExtResource("2_ssfuq")]
+zoom_speed = 0.1
+max_zoom = 1.5
+min_zoom = 0.75

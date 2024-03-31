@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bil1p3w5to756"]
+
+[ext_resource type="Script" path="res://Scenes/main_camera.gd" id="1_v341c"]
+
+[node name="MainCamera" type="Camera2D"]
+script = ExtResource("1_v341c")
+move_speed = 200.0
+zoom_speed = 0.3
+max_zoom = 2.0
+min_zoom = 0.5
