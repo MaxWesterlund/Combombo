@@ -8,11 +8,6 @@ func _ready():
 
 func _process(delta):
 	Globals.player_position = position
-	pass
-	#if Input.is_action_just_pressed("place_bomb"):
-		#var p = get_global_mouse_position()
-		#if not is_mouse_over_ui(p):
-			#add_explode_force(1000000, p)
 
 func add_explode_force(origin: Vector2, size: float):
 	var d = position - origin
