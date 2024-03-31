@@ -2,10 +2,10 @@ extends Node
 
 @export var image_path = ""
 
-var wall = preload("res://Scenes/Map/Wall.tscn")
-var ground = preload("res://Scenes/Map/Floor.tscn")
-var spawn = preload("res://Scenes/Map/Spawn.tscn")
-var goal = preload("res://Scenes/Map/Goal.tscn")
+var wall = preload("res://Scenes/Tiles/Wall.tscn")
+var ground = preload("res://Scenes/Tiles/Floor.tscn")
+var spawn = preload("res://Scenes/Tiles/Spawn.tscn")
+var goal = preload("res://Scenes/Tiles/Goal.tscn")
 
 var bomb = preload("res://Scenes/Bombo.tscn")
 
