@@ -6,7 +6,7 @@ enum STATE {
 	EXPLODED,
 }
 
-var explode_force = 2000000
+var explode_force = 4000000
 
 var state = STATE.IDLE
 var explode_time_start = 1.0

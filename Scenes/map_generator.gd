@@ -1,7 +1,5 @@
 extends TileMap
 
-@export var image_path = ""
-
 var bomb = preload("res://Scenes/bombo.tscn")
 
 const TILE_IMG_COLOR = {
@@ -20,7 +18,7 @@ const TILE_ATLAS_COORDS = {
 
 func _ready():
 	var image = Image.new()
-	image.load(image_path)
+	image.load(Globals.map_path)
 
 	var start_position = spawn_tiles(image)
 	get_node("/root/Main/Player").position = start_position
