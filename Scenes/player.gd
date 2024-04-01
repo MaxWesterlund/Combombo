@@ -17,6 +17,4 @@ func add_explode_force(origin: Vector2, size: float):
 		max_distance_multiplier * distance_that_will_max_mult / max(d.length(), distance_that_will_max_mult), 
 		max_distance_multiplier
 	)
-	print(d.length())
-	print(distance_multiplier)
 	apply_force(direction * size * distance_multiplier)

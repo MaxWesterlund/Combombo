@@ -1,0 +1,7 @@
+* push bomb out of wall
+* background
+* sounds
+* music
+
+* menu
+* download maps

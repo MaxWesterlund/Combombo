@@ -2,11 +2,6 @@ extends TileMap
 
 @export var image_path = ""
 
-var wall = preload("res://Scenes/Tiles/Wall.tscn")
-var ground = preload("res://Scenes/Tiles/Floor.tscn")
-var spawn = preload("res://Scenes/Tiles/Spawn.tscn")
-var goal = preload("res://Scenes/Tiles/Goal.tscn")
-
 var bomb = preload("res://Scenes/Bombo.tscn")
 
 const TILE_IMG_COLOR = {
@@ -16,16 +11,25 @@ const TILE_IMG_COLOR = {
 	wall = Color8(255, 0, 0),
 }
 
+const TILE_ATLAS_COORDS = {
+	ground = Vector2i(0, 0),
+	start = Vector2i(0, 0),
+	goal = Vector2i(1, 0),
+	wall = Vector2i(2, 0),
+}
+
 func _ready():
 	var image = Image.new()
 	image.load(image_path)
+
+	var start_position = spawn_tiles(image)
+	get_node("/root/Main/Player").position = start_position
 	
-	var image_height = image.get_height()
-	var image_width = image.get_width()
-	
-	var level_size = Vector2i(image_width, image_height - 1)
+	spawn_bombs(image)
+
+func spawn_tiles(image: Image) -> Vector2:
+	var level_size = Vector2i(image.get_width(), image.get_height() - 1)
 	var pp: Vector2
-	
 	for y in range(level_size.y):
 		for x in range(level_size.x):
 			var color01 = image.get_pixel(x, y)
@@ -33,31 +37,31 @@ func _ready():
 			set_cell(0, Vector2i(x, y) - level_size/2, 0, atlas_coords_from_color(color))
 			if color == TILE_IMG_COLOR.start:
 				pp = position
+	return pp
+
+func atlas_coords_from_color(color: Color) -> Vector2i:
+	if color.is_equal_approx(TILE_IMG_COLOR.ground):
+		return TILE_ATLAS_COORDS.ground
+	if color.is_equal_approx(TILE_IMG_COLOR.start):
+		return TILE_ATLAS_COORDS.start
+	if color.is_equal_approx(TILE_IMG_COLOR.goal):
+		return TILE_ATLAS_COORDS.goal
+	if color.is_equal_approx(TILE_IMG_COLOR.wall):
+		return TILE_ATLAS_COORDS.wall
+	return TILE_ATLAS_COORDS.ground
+
+func spawn_bombs(image: Image):
 	var bomb_count = 0
-	var bombs = []
-	for x in range(image_width):
-		var color = image.get_pixel(x, image_height - 1)
-		if color != Color(0, 0, 0, 0):
-			bombs.append(color.r + color.g + color.b)
-			
+	var bombs_values = []
+	for x in range(image.get_width()):
+		var color = image.get_pixel(x, image.get_height() - 1)
+		if color.a8 != 0:
+			bombs_values.append(color.r8 + color.g8 + color.b8)
+	
 	var individual = 40
 	var total = individual * bomb_count
-	for i in bombs:
+	for i in range(len(bombs_values)):
 		var instance = bomb.instantiate()
-		instance.explode_time = i
-		instance.position = Vector2(-total/2.0 * individual, 400)
+		instance.explode_time = bombs_values[i] / 10.0
+		instance.position = Vector2(-total/2.0 + individual * i, 400)
 		add_child(instance)
-	
-	get_node("/root/Main/Player").position = pp
-
-func atlas_coords_from_color(color) -> Vector2i:
-	match color:
-		TILE_IMG_COLOR.ground:
-			return Vector2i(0, 0)
-		TILE_IMG_COLOR.start:
-			return Vector2i(0, 0)
-		TILE_IMG_COLOR.goal:
-			return Vector2i(1, 0)
-		TILE_IMG_COLOR.wall:
-			return Vector2i(2, 0)
-	return ground

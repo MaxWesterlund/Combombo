@@ -18,8 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 Events="*res://Scripts/events.gd"
-Utils="*res://utils.gd"
-Globals="*res://globals.gd"
+Utils="*res://Scripts/utils.gd"
+Globals="*res://Scripts/globals.gd"
 
 [display]
 

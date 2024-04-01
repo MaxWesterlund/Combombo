@@ -65,7 +65,7 @@ func _on_fade_timer_timeout():
 
 func _on_input_event(viewport, event: InputEvent, shape_idx):
 	if event is InputEventMouseButton:
-		if event.pressed:
+		if event.pressed and !Utils.is_mouse_over_ui(get_global_mouse_position()):
 			Events.bomb_press.emit(self)
 		elif event.is_released():
 			Events.bomb_release.emit(self)

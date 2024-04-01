@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bonjovg4f3ffu"]
-
-[ext_resource type="Texture2D" uid="uid://ducqpm7ob1r6" path="res://Sprites/goal.png" id="1_c1sso"]
-
-[node name="Goal" type="Sprite2D"]
-texture = ExtResource("1_c1sso")
