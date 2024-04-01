@@ -1,10 +1,61 @@
-[gd_scene load_steps=4 format=3 uid="uid://cesb20ykxb25l"]
+[gd_scene load_steps=12 format=3 uid="uid://cesb20ykxb25l"]
 
 [ext_resource type="Script" path="res://Scenes/bombo.gd" id="1_dqc76"]
 [ext_resource type="Texture2D" uid="uid://grtdbfxtxjhy" path="res://Sprites/dynamite.png" id="2_r4dto"]
+[ext_resource type="Texture2D" uid="uid://bj15w4fxlbbia" path="res://Sprites/explosion_2.png" id="3_s7ndk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ymvyc"]
 size = Vector2(59.4778, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gtga"]
+atlas = ExtResource("3_s7ndk")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5jsq"]
+atlas = ExtResource("3_s7ndk")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_26jgu"]
+atlas = ExtResource("3_s7ndk")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ep6n"]
+atlas = ExtResource("3_s7ndk")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohj2p"]
+atlas = ExtResource("3_s7ndk")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sixrm"]
+atlas = ExtResource("3_s7ndk")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xicek"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2gtga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r5jsq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_26jgu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ep6n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ohj2p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sixrm")
+}],
+"loop": false,
+"name": &"boom",
+"speed": 12.0
+}]
 
 [node name="Bombo" type="RigidBody2D" groups=["Bombs"]]
 collision_layer = 4
@@ -22,8 +73,6 @@ texture = ExtResource("2_r4dto")
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
-[node name="FadeTimer" type="Timer" parent="."]
-
 [node name="Label" type="Label" parent="."]
 offset_left = -19.0
 offset_top = -41.0
@@ -37,6 +86,11 @@ position = Vector2(1.26968, -0.303232)
 rotation = -0.279253
 shape = SubResource("RectangleShape2D_ymvyc")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(-5, -7)
+sprite_frames = SubResource("SpriteFrames_xicek")
+animation = &"boom"
+
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="FadeTimer" to="." method="_on_fade_timer_timeout"]

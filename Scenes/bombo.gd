@@ -9,26 +9,32 @@ enum STATE {
 var explode_force = 2000000
 
 var state = STATE.IDLE
-var explode_time = 1.0
+var explode_time_start = 1.0
+var explode_time = explode_time_start
 
 @onready var player = get_node("/root/Main/Player")
 
 @onready var timer: Timer = $Timer
 @onready var time_text: Label = $Label
 @onready var sprite: Sprite2D = $Sprite2D
-@onready var explosion_texture: Texture2D = load("res://Sprites/explosion.png")
+@onready var explosion: AnimatedSprite2D = $AnimatedSprite2D
+
+func set_explode_time_start(time: float):
+	explode_time_start = time
+	explode_time = explode_time_start
 
 func _ready():
 	add_to_group("Bombs")
 	time_text.add_to_group("UI")
 	Events.attack.connect(start_timer)
 	time_text.text = "%.1f" % explode_time
+	explosion.animation_finished.connect(delete_self)
 
 func _process(delta):
 	if not timer.is_stopped():
 		explode_time = timer.time_left
 	time_text.text = "%.1f" % explode_time
-	print(get_colliding_bodies())
+	#print(get_colliding_bodies())
 
 func start_timer():
 	if state != STATE.IDLE:
@@ -43,10 +49,11 @@ func start_timer():
 func _on_timer_timeout():
 	if can_reach_player():
 		Events.bomb_exploded.emit(position, explode_force)
-	sprite.texture = explosion_texture
 	time_text.visible = false
 	state = STATE.EXPLODED
-	$FadeTimer.start()
+	sprite.visible = false
+	explosion.visible = true
+	explosion.play("boom")
 
 func can_reach_player():
 	var pp =  Globals.player_position
@@ -59,7 +66,7 @@ func can_reach_player():
 	
 	return !result
 
-func _on_fade_timer_timeout():
+func delete_self():
 	queue_free()
 
 func _on_input_event(viewport, event: InputEvent, shape_idx):

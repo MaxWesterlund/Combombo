@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5hcj7p6h2ebw"]
+
+[ext_resource type="Script" path="res://Scenes/last_attack.gd" id="1_0fk6k"]
+
+[node name="LastAttack" type="Node2D"]
+script = ExtResource("1_0fk6k")

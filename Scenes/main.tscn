@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bvoqjs6mnrhpo"]
+[gd_scene load_steps=7 format=3 uid="uid://bvoqjs6mnrhpo"]
 
-[ext_resource type="PackedScene" uid="uid://cnyltcixmksrr" path="res://Scenes/Player.tscn" id="1_eabme"]
+[ext_resource type="PackedScene" uid="uid://cnyltcixmksrr" path="res://Scenes/player.tscn" id="1_eabme"]
 [ext_resource type="Script" path="res://Scripts/attack_button.gd" id="2_g2qk1"]
 [ext_resource type="Script" path="res://Scripts/bomb_mover.gd" id="2_iy5b7"]
 [ext_resource type="PackedScene" uid="uid://chs0dpfphsi52" path="res://Scenes/MapGenerator.tscn" id="5_t57r2"]
+[ext_resource type="PackedScene" uid="uid://b5hcj7p6h2ebw" path="res://Scenes/last_attack.tscn" id="6_m456q"]
 [ext_resource type="PackedScene" uid="uid://bil1p3w5to756" path="res://Scenes/MainCamera.tscn" id="6_tlvpa"]
 
 [node name="Main" type="Node2D"]
@@ -27,5 +28,7 @@ script = ExtResource("2_g2qk1")
 [node name="Player" parent="." instance=ExtResource("1_eabme")]
 top_level = true
 position = Vector2(561, 320)
+
+[node name="LastAttack" parent="." instance=ExtResource("6_m456q")]
 
 [connection signal="pressed" from="MainCamera/AttackButton" to="MainCamera/AttackButton" method="_on_pressed"]
