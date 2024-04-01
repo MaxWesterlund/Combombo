@@ -6,6 +6,5 @@
 [node name="MapGenerator" type="TileMap"]
 tile_set = ExtResource("1_2wy6y")
 format = 2
-layer_0/tile_data = PackedInt32Array(524307, 0, 0, 589843, 0, 0, 655379, 0, 0, 524305, 131072, 0, 589841, 131072, 0, 655377, 131072, 0, 655378, 131072, 0, 524304, 131072, 0)
 script = ExtResource("1_ph1xh")
 image_path = "res://Levels/test_level.png"
