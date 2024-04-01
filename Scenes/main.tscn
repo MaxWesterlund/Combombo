@@ -9,7 +9,6 @@
 [node name="Main" type="Node2D"]
 
 [node name="MapGenerator" parent="." instance=ExtResource("5_t57r2")]
-collision_visibility_mode = 0
 
 [node name="BombMover" type="Node2D" parent="."]
 script = ExtResource("2_iy5b7")

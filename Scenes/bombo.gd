@@ -10,7 +10,6 @@ var explode_force = 2000000
 
 var state = STATE.IDLE
 var explode_time = 1.0
-var mouse_over = false
 
 @onready var player = get_node("/root/Main/Player")
 
@@ -26,11 +25,10 @@ func _ready():
 	time_text.text = "%.1f" % explode_time
 
 func _process(delta):
-	sprite.flip_v = mouse_over
 	if not timer.is_stopped():
 		explode_time = timer.time_left
 	time_text.text = "%.1f" % explode_time
-	#print(get_colliding_bodies())
+	print(get_colliding_bodies())
 
 func start_timer():
 	if state != STATE.IDLE:
@@ -65,9 +63,6 @@ func _on_fade_timer_timeout():
 	queue_free()
 
 func _on_input_event(viewport, event: InputEvent, shape_idx):
-	if event is InputEventMouseButton:
-		if event.pressed:
-			if !Utils.is_mouse_over_ui(get_global_mouse_position()):
-				Events.bomb_press.emit(self)
-		elif event.is_released():
-			Events.bomb_release.emit(self)
+	if event.is_action_pressed("pick_bomb"):
+		if !Utils.is_mouse_over_ui(get_global_mouse_position()):
+			Events.bomb_press.emit(self)
