@@ -1,7 +1,10 @@
 * push bomb out of wall
 * background
+* show last try (bombs) with transparency
+
 * sounds
 * music
 
 * menu
-* download maps
+* levels
+* download levels
