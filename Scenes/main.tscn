@@ -25,10 +25,10 @@ position = Vector2(561, 320)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="AttackButton" type="Button" parent="CanvasLayer" groups=["UI"]]
-offset_left = 526.0
-offset_top = 214.0
-offset_right = 594.0
-offset_bottom = 245.0
+offset_left = 27.0
+offset_top = 22.0
+offset_right = 95.0
+offset_bottom = 53.0
 mouse_filter = 1
 text = "ATTACK"
 script = ExtResource("2_g2qk1")
