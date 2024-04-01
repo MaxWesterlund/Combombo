@@ -6,10 +6,10 @@ enum STATE {
 	EXPLODED,
 }
 
+var explode_force = 2000000
+
 var state = STATE.IDLE
-
 var explode_time = 1.0
-
 var mouse_over = false
 
 @onready var player = get_node("/root/Main/Player")
@@ -43,7 +43,7 @@ func start_timer():
 
 func _on_timer_timeout():
 	if can_reach_player():
-		Events.bomb_exploded.emit(position, 5100009)
+		Events.bomb_exploded.emit(position, explode_force)
 	sprite.texture = explosion_texture
 	time_text.visible = false
 	state = STATE.EXPLODED

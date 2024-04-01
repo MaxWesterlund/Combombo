@@ -8,15 +8,6 @@
 
 [node name="Main" type="Node2D"]
 
-[node name="AttackButton" type="Button" parent="." groups=["UI"]]
-offset_left = 526.0
-offset_top = 214.0
-offset_right = 594.0
-offset_bottom = 245.0
-mouse_filter = 1
-text = "ATTACK"
-script = ExtResource("2_g2qk1")
-
 [node name="MapGenerator" parent="." instance=ExtResource("5_t57r2")]
 collision_visibility_mode = 0
 
@@ -25,8 +16,17 @@ script = ExtResource("2_iy5b7")
 
 [node name="MainCamera" parent="." instance=ExtResource("6_tlvpa")]
 
+[node name="AttackButton" type="Button" parent="MainCamera" groups=["UI"]]
+offset_left = 526.0
+offset_top = 214.0
+offset_right = 594.0
+offset_bottom = 245.0
+mouse_filter = 1
+text = "ATTACK"
+script = ExtResource("2_g2qk1")
+
 [node name="Player" parent="." instance=ExtResource("1_eabme")]
 top_level = true
 position = Vector2(561, 320)
 
-[connection signal="pressed" from="AttackButton" to="AttackButton" method="_on_pressed"]
+[connection signal="pressed" from="MainCamera/AttackButton" to="MainCamera/AttackButton" method="_on_pressed"]

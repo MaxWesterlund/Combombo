@@ -3,7 +3,8 @@
 [ext_resource type="Script" path="res://Scenes/bombo.gd" id="1_dqc76"]
 [ext_resource type="Texture2D" uid="uid://grtdbfxtxjhy" path="res://Sprites/dynamite.png" id="2_r4dto"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_y1ulb"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ymvyc"]
+size = Vector2(59.4778, 20)
 
 [node name="Bombo" type="RigidBody2D" groups=["Bombs"]]
 collision_layer = 4
@@ -30,9 +31,9 @@ mouse_filter = 1
 text = "1...0"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1.41586, -0.34515)
+position = Vector2(1.26968, -0.303232)
 rotation = -0.279253
-shape = SubResource("CircleShape2D_y1ulb")
+shape = SubResource("RectangleShape2D_ymvyc")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
