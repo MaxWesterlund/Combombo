@@ -51,15 +51,16 @@ func atlas_coords_from_color(color: Color) -> Vector2i:
 	return TILE_ATLAS_COORDS.ground
 
 func spawn_bombs(image: Image):
-	var bomb_count = 0
 	var bombs_values = []
 	for x in range(image.get_width()):
 		var color = image.get_pixel(x, image.get_height() - 1)
 		if color.a8 != 0:
 			bombs_values.append(color.r8 + color.g8 + color.b8)
+			
+	Globals.number_of_bombs = len(bombs_values)
 	
 	var individual = 40
-	var total = individual * bomb_count
+	var total = individual * len(bombs_values)
 	for i in range(len(bombs_values)):
 		var instance = bomb.instantiate()
 		instance.set_explode_time_start(bombs_values[i] / 10.0)

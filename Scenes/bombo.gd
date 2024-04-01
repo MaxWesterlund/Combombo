@@ -28,7 +28,7 @@ func _ready():
 	time_text.add_to_group("UI")
 	Events.attack.connect(start_timer)
 	time_text.text = "%.1f" % explode_time
-	explosion.animation_finished.connect(delete_self)
+	explosion.animation_finished.connect(hide_self)
 
 func _process(delta):
 	if not timer.is_stopped():
@@ -47,8 +47,9 @@ func start_timer():
 	timer.start()
 
 func _on_timer_timeout():
+	Events.bomb_exploded.emit(position, explode_force, self)
 	if can_reach_player():
-		Events.bomb_exploded.emit(position, explode_force)
+		Events.bomb_exploded_at_player.emit(position, explode_force)
 	time_text.visible = false
 	state = STATE.EXPLODED
 	sprite.visible = false
@@ -66,8 +67,8 @@ func can_reach_player():
 	
 	return !result
 
-func delete_self():
-	queue_free()
+func hide_self():
+	visible = false
 
 func _on_input_event(viewport, event: InputEvent, shape_idx):
 	if event.is_action_pressed("pick_bomb"):

@@ -3,12 +3,17 @@ extends RigidBody2D
 const max_distance_multiplier = 4
 var distance_that_will_max_mult = 40
 
+var bombs_exploded = 0
+
 func _ready():
-	Events.bomb_exploded.connect(add_explode_force)
+	Events.bomb_exploded_at_player.connect(get_exploded_at)
 	Globals.player_position = position
 
 func _process(delta):
 	Globals.player_position = position
+
+func get_exploded_at(origin: Vector2, size: float):
+	add_explode_force(origin, size)
 
 func add_explode_force(origin: Vector2, size: float):
 	var d = position - origin
