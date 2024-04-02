@@ -7,6 +7,8 @@ extends Camera2D
 
 var is_attacking: bool = false
 
+var last_player_position = null
+
 func _init():
 	Events.spawn_player.connect(on_spawn_player)
 	Events.attack.connect(on_attack)
@@ -49,4 +51,6 @@ func move(delta):
 	zoom = Vector2(zoom_amount, zoom_amount)
 
 func follow_player():
-	position = Globals.player_position
+	if last_player_position != null:
+		position = last_player_position
+	last_player_position = Globals.player_position
