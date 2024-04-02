@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqp2e6mm7tpot"]
+[gd_scene load_steps=6 format=3 uid="uid://bqp2e6mm7tpot"]
 
 [ext_resource type="Script" path="res://Scenes/Menus/menu.gd" id="1_bk30g"]
 [ext_resource type="PackedScene" uid="uid://6ejmjpdq8ddv" path="res://Scenes/Menus/Button.tscn" id="1_dlj25"]
+[ext_resource type="Texture2D" uid="uid://twgq00tqwxw2" path="res://Sprites/explosion.png" id="2_4od58"]
 [ext_resource type="AudioStream" uid="uid://ch7baxq5e3mxx" path="res://Sound/song.mp3" id="3_gc3xv"]
 [ext_resource type="FontFile" uid="uid://ucbily7xel7e" path="res://Fonts/5Recieptprint.ttf" id="3_i1ot3"]
 
@@ -13,6 +14,78 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_bk30g")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(700, 700)
+layout_mode = 0
+offset_left = 269.0
+offset_top = -209.0
+offset_right = 969.0
+offset_bottom = 491.0
+texture = ExtResource("2_4od58")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(700, 700)
+layout_mode = 0
+offset_left = -69.0
+offset_top = 53.0
+offset_right = 631.0
+offset_bottom = 753.0
+texture = ExtResource("2_4od58")
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(700, 700)
+layout_mode = 0
+offset_left = 405.0
+offset_top = 280.0
+offset_right = 1105.0
+offset_bottom = 980.0
+texture = ExtResource("2_4od58")
+
+[node name="TextureRect4" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(700, 700)
+layout_mode = 0
+offset_left = 753.0
+offset_top = -249.0
+offset_right = 1453.0
+offset_bottom = 451.0
+texture = ExtResource("2_4od58")
+
+[node name="TextureRect5" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(700, 700)
+layout_mode = 0
+offset_left = 617.0
+offset_top = 33.0
+offset_right = 1317.0
+offset_bottom = 733.0
+texture = ExtResource("2_4od58")
+
+[node name="TextureRect6" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(700, 700)
+layout_mode = 0
+offset_left = 995.0
+offset_top = 215.0
+offset_right = 1695.0
+offset_bottom = 915.0
+texture = ExtResource("2_4od58")
+
+[node name="TextureRect7" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(700, 700)
+layout_mode = 0
+offset_left = -240.0
+offset_top = -370.0
+offset_right = 460.0
+offset_bottom = 330.0
+texture = ExtResource("2_4od58")
+
+[node name="TextureRect8" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(700, 700)
+layout_mode = 0
+offset_left = -355.0
+offset_top = 361.0
+offset_right = 345.0
+offset_bottom = 1061.0
+texture = ExtResource("2_4od58")
 
 [node name="Button" parent="." instance=ExtResource("1_dlj25")]
 layout_mode = 0

@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://cislcta1suf12"]
+[gd_scene load_steps=8 format=3 uid="uid://cislcta1suf12"]
 
 [ext_resource type="Script" path="res://Scenes/Menus/level_select.gd" id="1_mj67a"]
 [ext_resource type="PackedScene" uid="uid://6ejmjpdq8ddv" path="res://Scenes/Menus/Button.tscn" id="2_51guy"]
+[ext_resource type="FontFile" uid="uid://ucbily7xel7e" path="res://Fonts/5Recieptprint.ttf" id="2_fv18k"]
+[ext_resource type="Texture2D" uid="uid://cey6b7fwqmgn8" path="res://Sprites/text_field.png" id="4_uk2hr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t4noc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lsv11"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p7s7a"]
 
 [node name="LevelSelect" type="Control"]
 layout_mode = 3
@@ -25,11 +33,36 @@ horizontal_scroll_mode = 0
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="GridContainer" type="GridContainer" parent="ScrollContainer/CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="ScrollContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_fv18k")
+theme_override_font_sizes/font_size = 20
+text = "Builtin"
+
+[node name="GridContainerBuiltin" type="GridContainer" parent="ScrollContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/v_separation = 0
-columns = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 4
+
+[node name="Label2" type="Label" parent="ScrollContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_fv18k")
+theme_override_font_sizes/font_size = 20
+text = "Custom"
+
+[node name="GridContainerCustom" type="GridContainer" parent="ScrollContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 4
 
 [node name="Button" parent="." instance=ExtResource("2_51guy")]
 layout_mode = 0
@@ -51,15 +84,41 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="LineEdit" type="LineEdit" parent="CenterContainer"]
+[node name="TextureRect" type="TextureRect" parent="CenterContainer"]
 visible = false
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(300, 70)
 layout_mode = 2
+texture = ExtResource("4_uk2hr")
+expand_mode = 1
+
+[node name="LineEdit" type="LineEdit" parent="CenterContainer/TextureRect"]
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -16.0
+offset_right = 36.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.105882, 0.0862745, 0.0509804, 1)
+theme_override_colors/font_selected_color = Color(0.105882, 0.0862745, 0.0509804, 1)
+theme_override_colors/font_placeholder_color = Color(0.317647, 0.235294, 0.176471, 1)
+theme_override_colors/caret_color = Color(1, 1, 1, 1)
+theme_override_colors/selection_color = Color(0.388235, 0.584314, 0.886275, 1)
+theme_override_fonts/font = ExtResource("2_fv18k")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_t4noc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lsv11")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_p7s7a")
 placeholder_text = "Folder Path"
 editable = false
 virtual_keyboard_enabled = false
 
 [connection signal="pressed" from="Button/TextureButton" to="." method="on_add_custom_levels"]
-[connection signal="text_submitted" from="CenterContainer/LineEdit" to="." method="on_custom_folder_selected"]
+[connection signal="text_submitted" from="CenterContainer/TextureRect/LineEdit" to="." method="on_custom_folder_selected"]
 
 [editable path="Button"]
