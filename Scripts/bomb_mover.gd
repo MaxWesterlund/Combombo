@@ -11,21 +11,21 @@ func _ready():
 	Events.bomb_press.connect(handle_bomb_press)
 	Events.attack.connect(on_attack)
 
-func _process(delta):
+func _process(_delta):
 	if bomb_moving:
 		bomb_moving.position = get_global_mouse_position() + bomb_delta
 		if Input.is_action_just_released("pick_bomb"):
 			handle_bomb_release()
 
-func spawn_bomb(position: Vector2):
+func spawn_bomb(pos: Vector2):
 	var instance = bomb.instantiate()
-	instance.position = position
+	instance.position = pos
 	add_child(instance)
 
-func handle_bomb_press(bomb: RigidBody2D):
+func handle_bomb_press(bomb_rb: RigidBody2D):
 	if bomb_moving == null:
 		CursorUpdater.is_holding = true
-		bomb.reparent(get_node("/root/Main/MapGenerator"))
+		bomb_rb.reparent(get_node("/root/Main/MapGenerator"))
 		bomb_moving = bomb
 		bomb_delta = bomb.position - get_global_mouse_position()
 	bomb_moving.freeze = true
@@ -37,8 +37,8 @@ func handle_bomb_release():
 		bomb_moving = null
 
 func on_attack():
-	for bomb in get_tree().get_nodes_in_group("Bombs"):
-		bomb.reparent(get_node("/root/Main/MapGenerator"))
+	for b in get_tree().get_nodes_in_group("Bombs"):
+		b.reparent(get_node("/root/Main/MapGenerator"))
 		if bomb_moving != null:
 			bomb_moving.freeze = false
 		bomb_moving = null

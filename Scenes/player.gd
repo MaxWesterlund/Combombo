@@ -42,8 +42,3 @@ func add_explode_force(origin: Vector2, size: float):
 		max_distance_multiplier
 	)
 	apply_force(direction * size * distance_multiplier)
-
-func _on_body_entered(body):
-	#print("enter")
-	#print(body)
-	pass

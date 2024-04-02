@@ -29,7 +29,7 @@ func _ready():
 	explosion.animation_finished.connect(on_animation_finished)
 	freeze = true
 
-func _process(delta):
+func _process(_delta):
 	if not timer.is_stopped():
 		explode_time = timer.time_left
 	time_text.text = "%.1f" % explode_time
@@ -57,7 +57,6 @@ func _on_timer_timeout():
 
 func can_reach_player():
 	var pp =  Globals.player_position
-	var d = position - pp
 	
 	var space_state = get_world_2d().direct_space_state
 	
@@ -70,7 +69,7 @@ func on_animation_finished():
 	visible = false
 	Events.bomb_exploded_finished_animation.emit(self)
 
-func _on_input_event(viewport, event: InputEvent, shape_idx):
+func _on_input_event(_viewport, event: InputEvent, _shape_idx):
 	if event.is_action_pressed("pick_bomb"):
 		if !Utils.is_mouse_over_ui(get_global_mouse_position()):
 			Events.bomb_press.emit(self)

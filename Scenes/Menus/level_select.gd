@@ -49,12 +49,12 @@ func add_built_in_levels():
 				add_level("res://Levels/" + file_name.replace(".import", ""), name_exp.search(file_name).get_string(), true)
 			file_name = dir.get_next()
 
-func add_level(path: String, name: String, builtin: bool):
+func add_level(path: String, level_name: String, builtin: bool):
 	var image = load(path) if builtin else Image.load_from_file(path)
 	if image == null:
 		return
 	var instance = level_panel.instantiate()
-	instance.display_level(image, name)
+	instance.display_level(image, level_name)
 	if builtin:
 		get_node("ScrollContainer/CenterContainer/VBoxContainer/GridContainerBuiltin").add_child(instance)
 	else:

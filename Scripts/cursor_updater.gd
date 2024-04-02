@@ -9,7 +9,7 @@ var last_click_time = 0
 var last_is_holding = false
 var is_holding = false
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("pick_bomb"):
 		Input.set_custom_mouse_cursor(cursor_click)
 		last_click_time = Time.get_ticks_msec()
