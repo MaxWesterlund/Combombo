@@ -7,7 +7,7 @@ var bombing_started_time: float
 
 var bombs_exploded = 0
 var all_bombs_exploded = false
-var has_won = false
+var game_over_or_won = false
 
 var elapsed_time = 0.0
 
@@ -21,11 +21,16 @@ func _process(delta):
 	elapsed_time += delta
 	Globals.player_position = position
 	
-	if not has_won and all_bombs_exploded and linear_velocity.length() <= 0.1 and abs(angular_velocity) <= 0.01 and Globals.parts_of_player_in_goal > 0:
-		linear_velocity = Vector2.ZERO
-		angular_velocity = 0
-		has_won = true
-		Events.player_won.emit(elapsed_time - bombing_started_time)
+	if not game_over_or_won:
+		var still: bool = linear_velocity.length() <= 0.1 and abs(angular_velocity) <= 0.01
+		if still and all_bombs_exploded:
+			linear_velocity = Vector2.ZERO
+			angular_velocity = 0
+			game_over_or_won = true
+			if Globals.parts_of_player_in_goal > 0:
+				Events.player_won.emit(elapsed_time - bombing_started_time)
+			else:
+				Events.player_not_won.emit(elapsed_time - bombing_started_time)
 
 func on_attack():
 	bombing_started_time = elapsed_time

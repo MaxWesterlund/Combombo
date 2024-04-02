@@ -9,3 +9,4 @@ signal bomb_press(bomb: RigidBody2D)
 signal all_bombs_exploded_and_finished
 signal player_entered_goal
 signal player_won(bombing_time: float)
+signal player_not_won(bombing_time: float)

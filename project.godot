@@ -73,7 +73,7 @@ zoom_out={
 
 [physics]
 
-2d/default_linear_damp=9.105
+2d/default_linear_damp=9.1
 2d/default_angular_damp=5.0
 
 [rendering]
