@@ -3,7 +3,7 @@ extends Control
 var level_panel = preload("res://Scenes/Menus/level_panel.tscn")
 
 func _ready():
-	var dir = DirAccess.open("res://Levels/")
+	var dir = DirAccess.open("Levels/")
 	if dir:
 		var format_exp = RegEx.new()
 		format_exp.compile("[.]\\w+$")

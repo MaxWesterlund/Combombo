@@ -2,7 +2,7 @@ extends PanelContainer
 
 @export var level_path = ""
 
-var game_scene = preload("res://Scenes/Main.tscn")
+var game_scene = preload("res://Scenes/main.tscn")
 
 func display_level():
 	get_node("MarginContainer/CenterContainer/GridContainer/Label").text = level_path

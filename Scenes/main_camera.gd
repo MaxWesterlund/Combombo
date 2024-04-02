@@ -18,8 +18,6 @@ func _process(delta):
 	
 	dir = dir.normalized()
 	
-	position += move_speed * delta * dir
-	
 	var zoom_dir = 0
 	
 	if Input.is_action_just_pressed("zoom_in"):
@@ -29,4 +27,5 @@ func _process(delta):
 	
 	var zoom_amount = clampf(zoom.x + zoom_dir * zoom_speed, min_zoom, max_zoom)
 	
+	position += move_speed * (1.0 / zoom_amount) * delta * dir
 	zoom = Vector2(zoom_amount, zoom_amount)
