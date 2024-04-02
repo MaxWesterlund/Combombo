@@ -15,8 +15,9 @@ func add_built_in_levels():
 		var file_name = dir.get_next()
 		while file_name != "":
 			var search = format_exp.search(file_name).get_string()
-			if search == ".png":
-				add_level("res://Levels/" + file_name)
+			if OS.has_feature("editor"):
+				if search == ".png":
+					add_level("res://Levels/" + file_name)
 			elif search == ".import":
 				add_level("res://Levels/" + file_name.replace(".import", ""))
 			file_name = dir.get_next()
