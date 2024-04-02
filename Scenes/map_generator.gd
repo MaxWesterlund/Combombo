@@ -17,8 +17,7 @@ const TILE_ATLAS_COORDS = {
 }
 
 func _ready():
-	var image = Image.new()
-	image.load(Globals.map_path)
+	var image = Globals.level_image
 
 	var start_position = spawn_tiles(image)
 	get_node("/root/Main/Player").position = start_position
