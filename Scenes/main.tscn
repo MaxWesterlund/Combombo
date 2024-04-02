@@ -1,13 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://bvoqjs6mnrhpo"]
+[gd_scene load_steps=8 format=3 uid="uid://bvoqjs6mnrhpo"]
 
-[ext_resource type="Script" path="res://Scripts/attack_button.gd" id="2_g2qk1"]
+[ext_resource type="Script" path="res://Scenes/main.gd" id="1_xl4yn"]
 [ext_resource type="Script" path="res://Scripts/bomb_mover.gd" id="2_iy5b7"]
 [ext_resource type="PackedScene" uid="uid://chs0dpfphsi52" path="res://Scenes/map_generator.tscn" id="5_t57r2"]
 [ext_resource type="PackedScene" uid="uid://b5hcj7p6h2ebw" path="res://Scenes/last_attack.tscn" id="6_m456q"]
 [ext_resource type="Script" path="res://Scenes/win_text.gd" id="6_sd38f"]
 [ext_resource type="PackedScene" uid="uid://b6r2p5bl20m6s" path="res://Scenes/main_camera.tscn" id="6_tlvpa"]
+[ext_resource type="PackedScene" uid="uid://6ejmjpdq8ddv" path="res://Scenes/Menus/button.tscn" id="8_7agj5"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_xl4yn")
 
 [node name="MapGenerator" parent="." instance=ExtResource("5_t57r2")]
 
@@ -19,15 +21,6 @@ script = ExtResource("2_iy5b7")
 [node name="LastAttack" parent="." instance=ExtResource("6_m456q")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="AttackButton" type="Button" parent="CanvasLayer" groups=["UI"]]
-offset_left = 27.0
-offset_top = 22.0
-offset_right = 95.0
-offset_bottom = 53.0
-mouse_filter = 1
-text = "ATTACK"
-script = ExtResource("2_g2qk1")
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 visible = false
@@ -43,4 +36,16 @@ text = "you have won. but at what cost?"
 horizontal_alignment = 1
 script = ExtResource("6_sd38f")
 
-[connection signal="pressed" from="CanvasLayer/AttackButton" to="CanvasLayer/AttackButton" method="_on_pressed"]
+[node name="Button" parent="CanvasLayer" instance=ExtResource("8_7agj5")]
+offset_left = 19.0
+offset_top = 11.0
+offset_right = 176.0
+offset_bottom = 91.0
+
+[node name="Label" parent="CanvasLayer/Button" index="1"]
+theme_override_font_sizes/font_size = 15
+text = "Detonate"
+
+[connection signal="pressed" from="CanvasLayer/Button/TextureButton" to="." method="_on_attack_pressed"]
+
+[editable path="CanvasLayer/Button"]
