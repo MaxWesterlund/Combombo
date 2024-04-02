@@ -30,11 +30,11 @@ text = "Level name"
 horizontal_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/CenterContainer/GridContainer"]
-custom_minimum_size = Vector2(150, 0)
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-expand_mode = 5
+expand_mode = 3
 
 [node name="Button" parent="MarginContainer/CenterContainer/GridContainer" instance=ExtResource("1_wr3ko")]
 custom_minimum_size = Vector2(200, 0)

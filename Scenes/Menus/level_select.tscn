@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cislcta1suf12"]
+[gd_scene load_steps=3 format=3 uid="uid://cislcta1suf12"]
 
 [ext_resource type="Script" path="res://Scenes/Menus/level_select.gd" id="1_mj67a"]
+[ext_resource type="PackedScene" uid="uid://6ejmjpdq8ddv" path="res://Scenes/Menus/Button.tscn" id="2_51guy"]
 
 [node name="LevelSelect" type="Control"]
 layout_mode = 3
@@ -29,3 +30,36 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/v_separation = 0
 columns = 2
+
+[node name="Button" parent="." instance=ExtResource("2_51guy")]
+layout_mode = 0
+offset_left = 897.0
+offset_top = 592.0
+offset_right = 1247.0
+offset_bottom = 696.0
+
+[node name="Label" parent="Button" index="1"]
+theme_override_font_sizes/font_size = 13
+text = "Add custom levels"
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="LineEdit" type="LineEdit" parent="CenterContainer"]
+visible = false
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+placeholder_text = "Folder Path"
+editable = false
+virtual_keyboard_enabled = false
+
+[connection signal="pressed" from="Button/TextureButton" to="." method="on_add_custom_levels"]
+[connection signal="text_submitted" from="CenterContainer/LineEdit" to="." method="on_custom_folder_selected"]
+
+[editable path="Button"]
