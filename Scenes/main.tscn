@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bvoqjs6mnrhpo"]
+[gd_scene load_steps=6 format=3 uid="uid://bvoqjs6mnrhpo"]
 
 [ext_resource type="Script" path="res://Scripts/attack_button.gd" id="2_g2qk1"]
 [ext_resource type="Script" path="res://Scripts/bomb_mover.gd" id="2_iy5b7"]
-[ext_resource type="PackedScene" path="res://Scenes/map_generator.tscn" id="5_t57r2"]
-[ext_resource type="PackedScene" path="res://Scenes/last_attack.tscn" id="6_m456q"]
-[ext_resource type="PackedScene" path="res://Scenes/main_camera.tscn" id="6_tlvpa"]
-[ext_resource type="Texture2D" uid="uid://dtwrd7pgfv5fn" path="res://Sprites/background.png" id="6_vuw80"]
+[ext_resource type="PackedScene" uid="uid://chs0dpfphsi52" path="res://Scenes/map_generator.tscn" id="5_t57r2"]
+[ext_resource type="PackedScene" uid="uid://b5hcj7p6h2ebw" path="res://Scenes/last_attack.tscn" id="6_m456q"]
+[ext_resource type="PackedScene" uid="uid://bil1p3w5to756" path="res://Scenes/main_camera.tscn" id="6_tlvpa"]
 
 [node name="Main" type="Node2D"]
 
@@ -28,21 +27,5 @@ offset_bottom = 53.0
 mouse_filter = 1
 text = "ATTACK"
 script = ExtResource("2_g2qk1")
-
-[node name="Background" type="CanvasLayer" parent="."]
-layer = -1
-
-[node name="MarginContainer" type="MarginContainer" parent="Background"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 380.0
-offset_bottom = 216.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect" type="TextureRect" parent="Background/MarginContainer"]
-layout_mode = 2
-texture = ExtResource("6_vuw80")
 
 [connection signal="pressed" from="CanvasLayer/AttackButton" to="CanvasLayer/AttackButton" method="_on_pressed"]

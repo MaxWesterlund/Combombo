@@ -3,6 +3,8 @@ extends TileMap
 var bomb = preload("res://Scenes/bombo.tscn")
 var player = preload("res://Scenes/player.tscn")
 
+@onready var camera = get_node("/root/Main/MainCamera")
+
 const TILE_IMG_COLOR = {
 	ground = Color8(0, 255, 0),
 	start = Color8(255, 0, 255),
@@ -65,5 +67,5 @@ func spawn_bombs(image: Image):
 	for i in range(len(bombs_values)):
 		var instance = bomb.instantiate()
 		instance.set_explode_time_start(bombs_values[i] / 10.0)
-		instance.position = Vector2(-total/2.0 + individual * i, 400)
-		add_child(instance)
+		instance.position = Vector2(-total/2.0 + individual * i, 200)
+		camera.add_child(instance)

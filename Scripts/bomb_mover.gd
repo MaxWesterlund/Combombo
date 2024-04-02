@@ -6,6 +6,7 @@ var bomb_delta: Vector2
 
 func _ready():
 	Events.bomb_press.connect(handle_bomb_press)
+	Events.attack.connect(on_attack)
 
 func _process(delta):
 	if bomb_moving:
@@ -20,6 +21,7 @@ func spawn_bomb(position: Vector2):
 
 func handle_bomb_press(bomb: RigidBody2D):
 	if bomb_moving == null:
+		bomb.reparent(get_node("/root/Main/MapGenerator"))
 		bomb_moving = bomb
 		bomb_delta = bomb.position - get_global_mouse_position()
 	bomb_moving.freeze = true
@@ -27,4 +29,11 @@ func handle_bomb_press(bomb: RigidBody2D):
 func handle_bomb_release():
 	if bomb_moving != null:
 		bomb_moving.freeze = false
+		bomb_moving = null
+
+func on_attack():
+	for bomb in get_tree().get_nodes_in_group("Bombs"):
+		bomb.reparent(get_node("/root/Main/MapGenerator"))
+		if bomb_moving != null:
+			bomb_moving.freeze = false
 		bomb_moving = null

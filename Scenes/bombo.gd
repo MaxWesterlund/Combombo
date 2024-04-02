@@ -12,8 +12,6 @@ var state = STATE.IDLE
 var explode_time_start = 1.0
 var explode_time = explode_time_start
 
-@onready var player = get_node("/root/Main/Player")
-
 @onready var timer: Timer = $Timer
 @onready var time_text: Label = $Label
 @onready var sprite: Sprite2D = $Sprite2D
@@ -28,7 +26,8 @@ func _ready():
 	time_text.add_to_group("UI")
 	Events.attack.connect(start_timer)
 	time_text.text = "%.1f" % explode_time
-	explosion.animation_finished.connect(hide_self)
+	explosion.animation_finished.connect(on_animation_finished)
+	freeze = true
 
 func _process(delta):
 	if not timer.is_stopped():
@@ -67,8 +66,9 @@ func can_reach_player():
 	
 	return !result
 
-func hide_self():
+func on_animation_finished():
 	visible = false
+	Events.bomb_exploded_finished_animation.emit(self)
 
 func _on_input_event(viewport, event: InputEvent, shape_idx):
 	if event.is_action_pressed("pick_bomb"):

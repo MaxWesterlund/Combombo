@@ -7,13 +7,13 @@ const alpha = 0.6
 var bombs_exploded = []
 
 func _ready():
-	Events.bomb_exploded.connect(on_bomb_exploded)
+	Events.bomb_exploded_finished_animation.connect(on_bomb_exploded_finished_animation)
 
-func on_bomb_exploded(position: Vector2, force: float, node: Node2D):
+func on_bomb_exploded_finished_animation(node: Node2D):
 	bombs_exploded.append(node)
 	if len(bombs_exploded) >= Globals.number_of_bombs:
 		update_ghosts()
-		Events.all_bombs_exploded.emit()
+		Events.all_bombs_exploded_and_finished.emit()
 
 func update_ghosts():
 	for n in get_children():
