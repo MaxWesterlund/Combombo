@@ -27,7 +27,7 @@ func handle_bomb_press(bomb_rb: RigidBody2D):
 		CursorUpdater.is_holding = true
 		bomb_rb.reparent(get_node("/root/Main/MapGenerator"))
 		bomb_moving = bomb_rb
-		bomb_delta = bomb_moving.position - get_global_mouse_position()
+		bomb_delta = bomb_rb.position - get_global_mouse_position()
 	bomb_moving.freeze = true
 
 func handle_bomb_release():
