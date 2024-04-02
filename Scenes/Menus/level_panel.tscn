@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://h738xaal2s1x"]
 
 [ext_resource type="Script" path="res://Scenes/Menus/level_panel.gd" id="1_niiny"]
-[ext_resource type="PackedScene" uid="uid://6ejmjpdq8ddv" path="res://Scenes/Menus/button.tscn" id="1_wr3ko"]
+[ext_resource type="PackedScene" uid="uid://6ejmjpdq8ddv" path="res://Scenes/Menus/Button.tscn" id="1_wr3ko"]
 
 [node name="LevelPanel" type="PanelContainer"]
 offset_right = 89.0
@@ -43,7 +43,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="Label" parent="MarginContainer/CenterContainer/GridContainer/Button" index="1"]
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 15
 text = "Enter
 "
 

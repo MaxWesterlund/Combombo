@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bqp2e6mm7tpot"]
+[gd_scene load_steps=5 format=3 uid="uid://bqp2e6mm7tpot"]
 
 [ext_resource type="Script" path="res://Scenes/Menus/menu.gd" id="1_bk30g"]
-[ext_resource type="PackedScene" uid="uid://6ejmjpdq8ddv" path="res://Scenes/Menus/button.tscn" id="1_dlj25"]
+[ext_resource type="PackedScene" uid="uid://6ejmjpdq8ddv" path="res://Scenes/Menus/Button.tscn" id="1_dlj25"]
 [ext_resource type="AudioStream" uid="uid://ch7baxq5e3mxx" path="res://Sound/song.mp3" id="3_gc3xv"]
+[ext_resource type="FontFile" uid="uid://ucbily7xel7e" path="res://Fonts/5Recieptprint.ttf" id="3_i1ot3"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -18,7 +19,7 @@ layout_mode = 0
 offset_left = 454.0
 offset_top = 314.0
 offset_right = 784.0
-offset_bottom = 454.0
+offset_bottom = 463.0
 
 [node name="Label" parent="Button" index="1"]
 text = "Start
@@ -37,16 +38,18 @@ text = "Exit
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 191.0
-offset_top = 64.0
-offset_right = 1034.0
-offset_bottom = 269.0
+offset_left = 176.0
+offset_top = 46.0
+offset_right = 1528.0
+offset_bottom = 346.0
+scale = Vector2(0.653028, 0.634692)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.486275, 0.0627451, 0.0117647, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/shadow_offset_x = 10
 theme_override_constants/shadow_offset_y = 10
 theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_i1ot3")
 theme_override_font_sizes/font_size = 150
 text = "Combombo"
 
