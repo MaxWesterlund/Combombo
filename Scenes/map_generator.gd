@@ -45,7 +45,6 @@ func spawn_tiles_and_player(image: Image):
 				goal_area_node.get_node("CollisionShape2D").shape.size = tile_set.tile_size
 				add_child(goal_area_node)
 	if has_start:
-		print(pp)
 		var player = player.instantiate()
 		player.position = pp
 		add_child(player)
