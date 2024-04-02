@@ -7,3 +7,5 @@ signal bomb_exploded_at_player(position: Vector2, force: float)
 signal spawn_player(position: Vector2)
 signal bomb_press(bomb: RigidBody2D)
 signal all_bombs_exploded_and_finished
+signal player_entered_goal
+signal player_won(bombing_time: float)

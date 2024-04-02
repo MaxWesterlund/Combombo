@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://Scripts/attack_button.gd" id="2_g2qk1"]
 [ext_resource type="Script" path="res://Scripts/bomb_mover.gd" id="2_iy5b7"]
-[ext_resource type="PackedScene" path="res://Scenes/map_generator.tscn" id="5_t57r2"]
-[ext_resource type="PackedScene" path="res://Scenes/last_attack.tscn" id="6_m456q"]
-[ext_resource type="PackedScene" path="res://Scenes/main_camera.tscn" id="6_tlvpa"]
-[ext_resource type="Texture2D" uid="uid://dtwrd7pgfv5fn" path="res://Sprites/background.png" id="6_vuw80"]
+[ext_resource type="PackedScene" uid="uid://chs0dpfphsi52" path="res://Scenes/map_generator.tscn" id="5_t57r2"]
+[ext_resource type="PackedScene" uid="uid://b5hcj7p6h2ebw" path="res://Scenes/last_attack.tscn" id="6_m456q"]
+[ext_resource type="Script" path="res://Scenes/win_text.gd" id="6_sd38f"]
+[ext_resource type="PackedScene" uid="uid://bil1p3w5to756" path="res://Scenes/main_camera.tscn" id="6_tlvpa"]
 
 [node name="Main" type="Node2D"]
 
@@ -29,20 +29,18 @@ mouse_filter = 1
 text = "ATTACK"
 script = ExtResource("2_g2qk1")
 
-[node name="Background" type="CanvasLayer" parent="."]
-layer = -1
-
-[node name="MarginContainer" type="MarginContainer" parent="Background"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 380.0
-offset_bottom = 216.0
+[node name="Label" type="Label" parent="CanvasLayer"]
+visible = false
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="TextureRect" type="TextureRect" parent="Background/MarginContainer"]
-layout_mode = 2
-texture = ExtResource("6_vuw80")
+theme_override_font_sizes/font_size = 50
+text = "you have won. but at what cost?"
+horizontal_alignment = 1
+script = ExtResource("6_sd38f")
 
 [connection signal="pressed" from="CanvasLayer/AttackButton" to="CanvasLayer/AttackButton" method="_on_pressed"]
