@@ -24,14 +24,14 @@ func spawn_bomb(position: Vector2):
 
 func handle_bomb_press(bomb: RigidBody2D):
 	if bomb_moving == null:
-		Input.set_custom_mouse_cursor(cursor_hold)
+		CursorUpdater.is_holding = true
 		bomb.reparent(get_node("/root/Main/MapGenerator"))
 		bomb_moving = bomb
 		bomb_delta = bomb.position - get_global_mouse_position()
 	bomb_moving.freeze = true
 
 func handle_bomb_release():
-	Input.set_custom_mouse_cursor(cursor)
+	CursorUpdater.is_holding = false
 	if bomb_moving != null:
 		bomb_moving.freeze = false
 		bomb_moving = null
