@@ -20,8 +20,10 @@ func _ready():
 func _process(delta):
 	elapsed_time += delta
 	Globals.player_position = position
-	if not has_won and all_bombs_exploded and linear_velocity.length() <= 0.1 and Globals.parts_of_player_in_goal > 0:
+	
+	if not has_won and all_bombs_exploded and linear_velocity.length() <= 0.1 and abs(angular_velocity) <= 0.01 and Globals.parts_of_player_in_goal > 0:
 		linear_velocity = Vector2.ZERO
+		angular_velocity = 0
 		has_won = true
 		Events.player_won.emit(elapsed_time - bombing_started_time)
 
