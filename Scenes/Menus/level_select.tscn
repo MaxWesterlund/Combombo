@@ -118,7 +118,7 @@ placeholder_text = "Folder Path"
 editable = false
 virtual_keyboard_enabled = false
 
-[connection signal="pressed" from="Button/TextureButton" to="." method="on_add_custom_levels"]
+[connection signal="pressed" from="Button" to="." method="on_add_custom_levels"]
 [connection signal="text_submitted" from="CenterContainer/TextureRect/LineEdit" to="." method="on_custom_folder_selected"]
 
 [editable path="Button"]

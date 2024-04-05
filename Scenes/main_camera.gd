@@ -53,4 +53,5 @@ func move(delta):
 func follow_player():
 	if last_player_position != null:
 		position = last_player_position
+	zoom = Vector2(1, 1)
 	last_player_position = Globals.player_position

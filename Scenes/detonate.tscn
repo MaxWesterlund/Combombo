@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dghx5qydsgaff"]
 
 [ext_resource type="Script" path="res://Scenes/detonate.gd" id="1_gcyl2"]
-[ext_resource type="PackedScene" uid="uid://6ejmjpdq8ddv" path="res://Scenes/Menus/button.tscn" id="2_gmyev"]
+[ext_resource type="PackedScene" uid="uid://6ejmjpdq8ddv" path="res://Scenes/Menus/Button.tscn" id="2_gmyev"]
 
 [node name="Detonate" type="Node2D"]
 script = ExtResource("1_gcyl2")
@@ -16,6 +16,6 @@ offset_bottom = 91.0
 theme_override_font_sizes/font_size = 15
 text = "Detonate"
 
-[connection signal="pressed" from="Button/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_texture_button_pressed"]
 
 [editable path="Button"]

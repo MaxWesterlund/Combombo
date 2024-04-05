@@ -1,13 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://6ejmjpdq8ddv"]
+[gd_scene load_steps=7 format=3 uid="uid://6ejmjpdq8ddv"]
 
 [ext_resource type="Texture2D" uid="uid://d4qpqdxl6wyq" path="res://Sprites/button.png" id="1_k7cyy"]
+[ext_resource type="Script" path="res://Scenes/Menus/Button.gd" id="1_vbp44"]
 [ext_resource type="Texture2D" uid="uid://bhxx0qcilv4pf" path="res://Sprites/button_pressed.png" id="2_r7nyh"]
 [ext_resource type="Texture2D" uid="uid://c4htluor4srqk" path="res://Sprites/button_hover.png" id="3_lhiuh"]
 [ext_resource type="FontFile" uid="uid://ucbily7xel7e" path="res://Fonts/5Recieptprint.ttf" id="4_widl1"]
+[ext_resource type="AudioStream" uid="uid://8ms854a5t2kj" path="res://Sound/stone_button.wav" id="6_3yep0"]
 
 [node name="Button" type="MarginContainer"]
 offset_right = 157.0
 offset_bottom = 80.0
+script = ExtResource("1_vbp44")
 
 [node name="TextureButton" type="TextureButton" parent="."]
 layout_mode = 2
@@ -25,3 +28,9 @@ theme_override_font_sizes/font_size = 20
 text = "Button"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_3yep0")
+volume_db = 1.0
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_press"]
