@@ -10,3 +10,5 @@ signal all_bombs_exploded_and_finished
 signal player_entered_goal
 signal player_won(bombing_time: float)
 signal player_not_won(bombing_time: float)
+signal restart
+signal goto_menu

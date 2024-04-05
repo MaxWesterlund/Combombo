@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bvoqjs6mnrhpo"]
+[gd_scene load_steps=10 format=3 uid="uid://bvoqjs6mnrhpo"]
 
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_xl4yn"]
 [ext_resource type="Script" path="res://Scripts/bomb_mover.gd" id="2_iy5b7"]
@@ -6,7 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://b5hcj7p6h2ebw" path="res://Scenes/last_attack.tscn" id="6_m456q"]
 [ext_resource type="Script" path="res://Scenes/win_text.gd" id="6_sd38f"]
 [ext_resource type="PackedScene" uid="uid://b6r2p5bl20m6s" path="res://Scenes/main_camera.tscn" id="6_tlvpa"]
-[ext_resource type="PackedScene" uid="uid://6ejmjpdq8ddv" path="res://Scenes/Menus/button.tscn" id="8_7agj5"]
+[ext_resource type="PackedScene" uid="uid://dghx5qydsgaff" path="res://Scenes/detonate.tscn" id="7_if7sk"]
+[ext_resource type="PackedScene" uid="uid://d2vwpfbptr8yj" path="res://Scenes/gotoMenu.tscn" id="8_l2itw"]
+[ext_resource type="PackedScene" uid="uid://c2jg35g8f8od1" path="res://Scenes/restart.tscn" id="9_1morj"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_xl4yn")
@@ -36,16 +38,11 @@ text = "you have won. but at what cost?"
 horizontal_alignment = 1
 script = ExtResource("6_sd38f")
 
-[node name="Button" parent="CanvasLayer" instance=ExtResource("8_7agj5")]
-offset_left = 19.0
-offset_top = 11.0
-offset_right = 176.0
-offset_bottom = 91.0
+[node name="GotoMenu" parent="CanvasLayer" instance=ExtResource("8_l2itw")]
+position = Vector2(1108, 14)
 
-[node name="Label" parent="CanvasLayer/Button" index="1"]
-theme_override_font_sizes/font_size = 15
-text = "Detonate"
+[node name="Detonate" parent="CanvasLayer" instance=ExtResource("7_if7sk")]
 
-[connection signal="pressed" from="CanvasLayer/Button/TextureButton" to="." method="_on_attack_pressed"]
-
-[editable path="CanvasLayer/Button"]
+[node name="Restart" parent="CanvasLayer" instance=ExtResource("9_1morj")]
+visible = false
+position = Vector2(519, 203)

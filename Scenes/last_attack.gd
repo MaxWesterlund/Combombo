@@ -4,10 +4,21 @@ var bomb_scene = preload("res://Scenes/bombo.tscn")
 
 const alpha = 0.6
 
-var bombs_exploded = []
+var bombs_exploded: Array[Node2D] = []
+var bomb_ghosts: Array[Node2D] = []
+
+func _init():
+	Events.bomb_exploded_finished_animation.connect(on_bomb_exploded_finished_animation)
+	Events.restart.connect(on_restart)
+
+func on_restart():
+	Globals.last_attack_bomb_ghosts = bomb_ghosts.duplicate()
 
 func _ready():
-	Events.bomb_exploded_finished_animation.connect(on_bomb_exploded_finished_animation)
+	modulate.a = alpha
+	if len(Globals.last_attack_bomb_ghosts) > 0:
+		for b in Globals.last_attack_bomb_ghosts:
+			add_child(b)
 
 func on_bomb_exploded_finished_animation(node: Node2D):
 	bombs_exploded.append(node)
@@ -15,24 +26,31 @@ func on_bomb_exploded_finished_animation(node: Node2D):
 		update_ghosts()
 		Events.all_bombs_exploded_and_finished.emit()
 
-func update_ghosts():
+func update_bombs(bombs: Array[Node2D]):
+	bombs_exploded = bombs
+	update_ghosts()
+
+func remove_children():
 	for n in get_children():
 		remove_child(n)
 		n.queue_free()
 
+func update_ghosts():
+	remove_children()
+	
 	for b in bombs_exploded:
-		var bomb_ghost = bomb_scene.instantiate()
-		bomb_ghost.position = b.position
-		bomb_ghost.set_explode_time_start(b.explode_time_start)
-		var sprite = bomb_ghost.get_node("Sprite2D")
+		var bomb_ghost_temp = bomb_scene.instantiate()
+		bomb_ghost_temp.position = b.position
+		bomb_ghost_temp.set_explode_time_start(b.explode_time_start)
+		var sprite = bomb_ghost_temp.get_node("Sprite2D")
 		sprite.position = sprite.global_position
-		sprite.modulate.a = alpha
-		var label = bomb_ghost.get_node("Label")
+		var label = bomb_ghost_temp.get_node("Label")
 		label.position = label.global_position
-		label.text = "%.1f" % bomb_ghost.explode_time_start
-		label.modulate.a = alpha
-		add_child(sprite.duplicate())
-		add_child(label.duplicate())
-		b.queue_free()
+		label.text = "%.1f" % bomb_ghost_temp.explode_time_start
 		
-	bombs_exploded.clear()
+		var bomb_ghost = Node2D.new()
+		bomb_ghost.add_child(sprite.duplicate())
+		bomb_ghost.add_child(label.duplicate())
+		add_child(bomb_ghost)
+		bomb_ghosts.append(bomb_ghost.duplicate())
+		b.queue_free()
