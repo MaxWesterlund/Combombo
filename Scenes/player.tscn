@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cnyltcixmksrr"]
+[gd_scene load_steps=12 format=3 uid="uid://cnyltcixmksrr"]
 
 [ext_resource type="Script" path="res://Scenes/player.gd" id="1_k51hv"]
 [ext_resource type="Texture2D" uid="uid://dafqniv80yhly" path="res://Sprites/torso.png" id="2_7xj5q"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://pc0atpcxua1t" path="res://Sprites/left_leg.png" id="5_j7wiw"]
 [ext_resource type="Texture2D" uid="uid://bkh0xtn0h47dd" path="res://Sprites/right_leg.png" id="6_6bw4t"]
 [ext_resource type="Texture2D" uid="uid://bjxptueu70bqw" path="res://Sprites/head.png" id="7_bdwdo"]
+[ext_resource type="AudioStream" uid="uid://dfw3nxwtvu4n" path="res://Sound/impact.wav" id="8_obem1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m37u2"]
 radius = 24.0
@@ -29,6 +30,8 @@ continuous_cd = 2
 max_contacts_reported = 10
 contact_monitor = true
 script = ExtResource("1_k51hv")
+min_velocity_sound = 150.0
+max_velocity_sound = 1000.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
@@ -163,6 +166,9 @@ position = Vector2(0, 9)
 node_a = NodePath("../..")
 node_b = NodePath("..")
 disable_collision = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_obem1")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="RightArm" to="." method="_on_body_entered"]

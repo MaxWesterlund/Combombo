@@ -1,5 +1,8 @@
 extends RigidBody2D
 
+@export var min_velocity_sound: float
+@export var max_velocity_sound: float
+
 const max_distance_multiplier = 4
 var distance_that_will_max_mult = 40
 
@@ -31,6 +34,15 @@ func _process(delta):
 				Events.player_won.emit(elapsed_time - bombing_started_time)
 			else:
 				Events.player_not_won.emit(elapsed_time - bombing_started_time)
+
+func _on_body_entered(_body):
+	if $AudioStreamPlayer.playing:
+		return
+	var vel = linear_velocity.length()
+	var amount = clampf((vel - min_velocity_sound) / max_velocity_sound, 0, 1)
+	if amount > 0:
+		$AudioStreamPlayer.volume_db = 1 - amount
+		$AudioStreamPlayer.play()
 
 func on_attack():
 	bombing_started_time = elapsed_time
