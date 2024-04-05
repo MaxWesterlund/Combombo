@@ -6,6 +6,7 @@ var format_exp = RegEx.new()
 var name_exp = RegEx.new()
 
 func _ready():
+	Globals.last_attack_bomb_ghosts = []
 	format_exp.compile("[.]\\w+$")
 	name_exp.compile("^\\w+")
 	add_built_in_levels()
