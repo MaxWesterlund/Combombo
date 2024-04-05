@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://cesb20ykxb25l"]
+[gd_scene load_steps=13 format=3 uid="uid://cesb20ykxb25l"]
 
 [ext_resource type="Script" path="res://Scenes/bombo.gd" id="1_dqc76"]
 [ext_resource type="Texture2D" uid="uid://grtdbfxtxjhy" path="res://Sprites/dynamite.png" id="2_r4dto"]
 [ext_resource type="Texture2D" uid="uid://bj15w4fxlbbia" path="res://Sprites/explosion_2.png" id="3_s7ndk"]
+[ext_resource type="AudioStream" uid="uid://8c8fvr1ipm4s" path="res://Sound/explosion1.wav" id="4_6e0bp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ymvyc"]
 size = Vector2(59.4778, 20)
@@ -91,6 +92,10 @@ visible = false
 position = Vector2(-5, -7)
 sprite_frames = SubResource("SpriteFrames_xicek")
 animation = &"boom"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_6e0bp")
+attenuation = 7.0
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

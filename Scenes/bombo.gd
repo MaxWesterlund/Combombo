@@ -16,6 +16,7 @@ var explode_time = explode_time_start
 @onready var time_text: Label = $Label
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var explosion: AnimatedSprite2D = $AnimatedSprite2D
+@onready var explosionAudio: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 func set_explode_time_start(time: float):
 	explode_time_start = time
@@ -54,6 +55,9 @@ func _on_timer_timeout():
 	sprite.visible = false
 	explosion.visible = true
 	explosion.play("boom")
+	explosionAudio.pitch_scale = randf_range(0.95, 1.05)
+	explosionAudio.volume_db = randf_range(-5, 5)
+	explosionAudio.play()
 
 func can_reach_player():
 	var pp =  Globals.player_position
