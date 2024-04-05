@@ -1,9 +1,10 @@
 extends Node2D
 
-var menu_scene = preload("res://Scenes/Menus/menu.tscn")
+var menu_scene: PackedScene
 var game_scene = preload("res://Scenes/main.tscn")
 
 func _ready():
+	menu_scene = load("res://Scenes/Menus/menu.tscn")
 	Events.goto_menu.connect(on_goto_menu)
 	Events.restart.connect(on_restart)
 
