@@ -75,5 +75,9 @@ func spawn_bombs(image: Image):
 	for i in range(len(bombs_values)):
 		var instance = bomb.instantiate()
 		instance.set_explode_time_start(bombs_values[i] / 10.0)
-		instance.position = Vector2(-total/2.0 + individual * i, 200)
-		camera.add_child(instance)
+		if len(Globals.last_attack_bomb_ghosts) == 0:
+			instance.position = Vector2(-total/2.0 + individual * i, 200)
+			camera.add_child(instance)
+		else:
+			instance.position = Globals.last_attack_bomb_ghosts[i].position
+			add_child(instance)

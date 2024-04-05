@@ -1,7 +1,6 @@
 * push bomb out of wall
 
-* sounds
-* music
+* snap bomb to ghost when press certain key
 
 * menu
 * levels

@@ -40,15 +40,13 @@ func update_ghosts():
 	
 	for b in bombs_exploded:
 		var bomb_ghost_temp = bomb_scene.instantiate()
-		bomb_ghost_temp.position = b.position
 		bomb_ghost_temp.set_explode_time_start(b.explode_time_start)
 		var sprite = bomb_ghost_temp.get_node("Sprite2D")
-		sprite.position = sprite.global_position
 		var label = bomb_ghost_temp.get_node("Label")
-		label.position = label.global_position
 		label.text = "%.1f" % bomb_ghost_temp.explode_time_start
 		
 		var bomb_ghost = Node2D.new()
+		bomb_ghost.global_position = b.global_position
 		bomb_ghost.add_child(sprite.duplicate())
 		bomb_ghost.add_child(label.duplicate())
 		add_child(bomb_ghost)
