@@ -6,6 +6,8 @@ extends RigidBody2D
 const max_distance_multiplier = 4
 var distance_that_will_max_mult = 40
 
+const time_until_lost = 2.0
+
 var bombing_started_time: float
 
 var bombs_exploded = 0
@@ -13,6 +15,8 @@ var all_bombs_exploded = false
 var game_over_or_won = false
 
 var elapsed_time = 0.0
+
+var all_bombs_exploded_time_start = 0.0
 
 func _ready():
 	Events.bomb_exploded_at_player.connect(get_exploded_at)
@@ -25,15 +29,20 @@ func _process(delta):
 	Globals.player_position = position
 	
 	if not game_over_or_won:
-		var still: bool = linear_velocity.length() <= 0.1 and abs(angular_velocity) <= 0.01
-		if still and all_bombs_exploded:
-			linear_velocity = Vector2.ZERO
-			angular_velocity = 0
-			game_over_or_won = true
-			if Globals.parts_of_player_in_goal > 0:
-				Events.player_won.emit(elapsed_time - bombing_started_time)
+		if all_bombs_exploded:
+			var still: bool = linear_velocity.length() <= 0.1 and abs(angular_velocity) <= 0.01
+			if still:
+				linear_velocity = Vector2.ZERO
+				angular_velocity = 0
+				game_over_or_won = true
+				if Globals.parts_of_player_in_goal > 0:
+					Events.player_won.emit(elapsed_time - bombing_started_time)
+				else:
+					Events.player_not_won.emit(elapsed_time - bombing_started_time)
 			else:
-				Events.player_not_won.emit(elapsed_time - bombing_started_time)
+				if elapsed_time - all_bombs_exploded_time_start > time_until_lost:
+					game_over_or_won = true
+					Events.player_not_won.emit(elapsed_time - bombing_started_time)
 
 func _on_body_entered(_body):
 	if $AudioStreamPlayer.playing:
@@ -48,6 +57,7 @@ func on_attack():
 	bombing_started_time = elapsed_time
 
 func on_all_bombs_exploded_and_finished():
+	all_bombs_exploded_time_start = elapsed_time
 	all_bombs_exploded = true
 
 func get_exploded_at(origin: Vector2, size: float):
