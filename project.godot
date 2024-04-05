@@ -21,6 +21,7 @@ Events="*res://Scripts/events.gd"
 Utils="*res://Scripts/utils.gd"
 Globals="*res://Scripts/globals.gd"
 CursorUpdater="*res://Scripts/cursor_updater.gd"
+DataSaver="*res://Scripts/data_saver.gd"
 
 [display]
 
