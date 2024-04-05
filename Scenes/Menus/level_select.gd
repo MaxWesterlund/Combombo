@@ -51,7 +51,7 @@ func add_built_in_levels():
 			file_name = dir.get_next()
 
 func add_level(path: String, level_name: String, builtin: bool):
-	var image = Image.load_from_file(path)
+	var image = load(path) if builtin else Image.load_from_file(path)
 	if image == null:
 		return
 	var instance = level_panel.instantiate()
