@@ -1,4 +1,5 @@
 * push bomb out of wall
+* bomb collider smaller (not for selecting)
 
 * backgrounds
 * fullscreen? resolution adapt (project settings)
