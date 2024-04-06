@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdsdfva87q23i"]
+
+[ext_resource type="Script" path="res://Scenes/Menus/how_to_custom_button.gd" id="1_g8qjb"]
+[ext_resource type="PackedScene" uid="uid://6ejmjpdq8ddv" path="res://Scenes/Menus/button.tscn" id="1_t3enu"]
+
+[node name="HowToCustomButton" type="Node2D"]
+script = ExtResource("1_g8qjb")
+
+[node name="Button" parent="." instance=ExtResource("1_t3enu")]
+offset_right = 65.0
+
+[node name="Label" parent="Button" index="1"]
+text = "?"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+
+[editable path="Button"]

@@ -1,0 +1,84 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4mjywgxxbd5b"]
+
+[ext_resource type="Script" path="res://Scenes/Menus/how_to_custom_levels_panel_x.gd" id="1_iwbiy"]
+[ext_resource type="PackedScene" uid="uid://6ejmjpdq8ddv" path="res://Scenes/Menus/button.tscn" id="2_565o6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4l0mh"]
+bg_color = Color(0, 0, 0, 0.870588)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="HowToCustomLevels" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 357.0
+offset_bottom = 266.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4l0mh")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.213
+offset_left = 21.0
+offset_top = 12.0
+offset_right = -25.0
+offset_bottom = -6.095
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "How to add custom levels"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+uppercase = true
+
+[node name="Label2" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 35.0
+offset_top = 58.0
+offset_right = -45.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 12
+text = "Step 1: Create an image representing the level. Red pixels (255, 0, 0, 255) are walls, Green (0, 255, 0, 255) grass, Pink (255, 0, 255, 255) the starting position and Yellow (255, 255, 0, 255) a goal. The file should be a png.
+
+Step 2: Click the button \"Add custom levels\" and enter the path to the folder where your level(s) is located. Hit enter to add your levels."
+autowrap_mode = 3
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_iwbiy")
+
+[node name="Button" parent="Control" instance=ExtResource("2_565o6")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.279
+anchor_right = 0.279
+offset_left = 319.84
+offset_top = -17.0
+offset_right = 363.84
+offset_bottom = 31.0
+
+[node name="Label" parent="Control/Button" index="1"]
+theme_override_font_sizes/font_size = 15
+text = "x"
+
+[connection signal="pressed" from="Control/Button" to="Control" method="_on_button_pressed"]
+
+[editable path="Control/Button"]

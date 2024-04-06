@@ -14,6 +14,9 @@ func _ready():
 	
 	menu_scene = load("res://Scenes/Menus/menu.tscn")
 	Events.goto_menu.connect(on_goto_menu)
+	
+	for custom_level in DataSaver.get_stored_custom_levels():
+		add_level(custom_level["image"], custom_level["name"], false)
 
 func on_goto_menu():
 	get_tree().change_scene_to_packed(menu_scene)
@@ -29,6 +32,7 @@ func on_custom_folder_selected(path: String):
 	line_edit.editable = false
 	line_edit.text = ""
 	add_custom_levels(path + "/")
+	get_tree().reload_current_scene()
 
 func add_custom_levels(path: String):
 	var dir = DirAccess.open(path)
@@ -40,7 +44,10 @@ func add_custom_levels(path: String):
 			if search == null:
 				return
 			if search.get_string() == ".png":
-				add_level(path + file_name, name_exp.search(file_name).get_string(), false)
+				var image: Image = Image.load_from_file(path + file_name)
+				var name = name_exp.search(file_name).get_string()
+				add_level(image, name, false)
+				DataSaver.store_just_added_custom_level(image, name)
 			file_name = dir.get_next()
 
 func add_built_in_levels():
@@ -52,13 +59,12 @@ func add_built_in_levels():
 			var search = format_exp.search(file_name).get_string()
 			if OS.has_feature("editor"):
 				if search == ".png":
-					add_level("res://Levels/" + file_name, name_exp.search(file_name).get_string(), true)
+					add_level(load("res://Levels/" + file_name), name_exp.search(file_name).get_string(), true)
 			elif search == ".import":
-				add_level("res://Levels/" + file_name.replace(".import", ""), name_exp.search(file_name).get_string(), true)
+				add_level(load("res://Levels/" + file_name.replace(".import", "")), name_exp.search(file_name).get_string(), true)
 			file_name = dir.get_next()
 
-func add_level(path: String, level_name: String, builtin: bool):
-	var image = load(path) if builtin else Image.load_from_file(path)
+func add_level(image: Image, level_name: String, builtin: bool):
 	if image == null:
 		return
 	var instance = level_panel.instantiate()

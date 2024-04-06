@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://cislcta1suf12"]
+[gd_scene load_steps=11 format=3 uid="uid://cislcta1suf12"]
 
 [ext_resource type="Script" path="res://Scenes/Menus/level_select.gd" id="1_mj67a"]
 [ext_resource type="PackedScene" uid="uid://6ejmjpdq8ddv" path="res://Scenes/Menus/button.tscn" id="2_51guy"]
 [ext_resource type="FontFile" uid="uid://ucbily7xel7e" path="res://Fonts/5Recieptprint.ttf" id="2_fv18k"]
 [ext_resource type="Texture2D" uid="uid://cey6b7fwqmgn8" path="res://Sprites/text_field.png" id="4_uk2hr"]
 [ext_resource type="PackedScene" uid="uid://d2vwpfbptr8yj" path="res://Scenes/goto_menu.tscn" id="5_08ax8"]
+[ext_resource type="PackedScene" uid="uid://cdsdfva87q23i" path="res://Scenes/Menus/how_to_custom_button.tscn" id="5_xk7tm"]
+[ext_resource type="PackedScene" uid="uid://b4mjywgxxbd5b" path="res://Scenes/Menus/how_to_custom_levels.tscn" id="6_0my3e"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t4noc"]
 
@@ -100,9 +102,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -36.0
+offset_left = -130.0
 offset_top = -16.0
-offset_right = 36.0
+offset_right = 130.0
 offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -118,6 +120,23 @@ theme_override_styles/read_only = SubResource("StyleBoxEmpty_p7s7a")
 placeholder_text = "Folder Path"
 editable = false
 virtual_keyboard_enabled = false
+
+[node name="HowToCustomButton" parent="CenterContainer/TextureRect" node_paths=PackedStringArray("panel") instance=ExtResource("5_xk7tm")]
+position = Vector2(115, 87)
+panel = NodePath("../HowToCustomLevels")
+
+[node name="HowToCustomLevels" parent="CenterContainer/TextureRect" instance=ExtResource("6_0my3e")]
+visible = false
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -31.0
+offset_top = -54.0
+offset_right = 269.0
+offset_bottom = 16.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="GotoMenu" parent="." instance=ExtResource("5_08ax8")]
 position = Vector2(1108, 14)
