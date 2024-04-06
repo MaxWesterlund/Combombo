@@ -1,8 +1,9 @@
 * push bomb out of wall
 
-* snap bomb to ghost when press certain key
+* backgrounds
+* fullscreen? resolution adapt (project settings)
+* load custom levels not working if many weird files in same directory?
 
-* menu
 * levels
 
 extra:

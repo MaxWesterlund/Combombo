@@ -69,6 +69,7 @@ func add_level(image: Image, level_name: String, builtin: bool):
 		return
 	var instance = level_panel.instantiate()
 	instance.display_level(image, level_name)
+	instance.set_is_custom(!builtin)
 	if builtin:
 		get_node("ScrollContainer/CenterContainer/VBoxContainer/GridContainerBuiltin").add_child(instance)
 	else:

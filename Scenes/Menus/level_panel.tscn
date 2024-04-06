@@ -1,14 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://h738xaal2s1x"]
+[gd_scene load_steps=4 format=3 uid="uid://h738xaal2s1x"]
 
 [ext_resource type="Script" path="res://Scenes/Menus/level_panel.gd" id="1_niiny"]
 [ext_resource type="PackedScene" uid="uid://6ejmjpdq8ddv" path="res://Scenes/Menus/button.tscn" id="1_wr3ko"]
+[ext_resource type="Script" path="res://Scenes/Menus/delete_custom_level.gd" id="2_geo3e"]
 
-[node name="LevelPanel" type="PanelContainer"]
+[node name="LevelPanel" type="PanelContainer" node_paths=PackedStringArray("delete_button")]
 offset_right = 89.0
 offset_bottom = 23.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_niiny")
+delete_button = NodePath("DeleteCustom")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -52,6 +54,23 @@ text = "Enter
 layout_mode = 2
 text = "Highscore:"
 
+[node name="DeleteCustom" type="Control" parent="." node_paths=PackedStringArray("level_panel")]
+layout_mode = 2
+mouse_filter = 2
+script = ExtResource("2_geo3e")
+level_panel = NodePath("..")
+
+[node name="Button" parent="DeleteCustom" instance=ExtResource("1_wr3ko")]
+layout_mode = 0
+offset_right = 30.0
+offset_bottom = 31.0
+
+[node name="Label" parent="DeleteCustom/Button" index="1"]
+theme_override_font_sizes/font_size = 10
+text = "x"
+
 [connection signal="pressed" from="MarginContainer/CenterContainer/GridContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="DeleteCustom/Button" to="DeleteCustom" method="_on_button_pressed"]
 
 [editable path="MarginContainer/CenterContainer/GridContainer/Button"]
+[editable path="DeleteCustom/Button"]

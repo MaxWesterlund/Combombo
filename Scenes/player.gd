@@ -6,7 +6,7 @@ extends RigidBody2D
 const max_distance_multiplier = 4
 var distance_that_will_max_mult = 40
 
-const time_until_lost = 2.0
+const time_until_lost = 1.0
 
 var bombing_started_time: float
 

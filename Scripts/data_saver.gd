@@ -73,3 +73,12 @@ func get_stored_custom_levels():
 	#print("o")
 	#print(output)
 	return output
+
+func delete_custom_level(image: Image):
+	var data = str(image.data["data"])	
+	levels.erase(data)
+	save()
+
+func is_custom(image: Image) -> bool:
+	var data = str(image.data["data"])	
+	return levels[data].has("is_custom") and levels[data]["is_custom"] == true
