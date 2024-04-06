@@ -18,7 +18,6 @@ func save_highscore_if_better(score: float):
 		return
 	
 	var data = str(image.data["data"])
-	print(levels.has(data))
 	if not levels.has(data):
 		levels[data] = score
 	elif score < levels[data]:
@@ -27,9 +26,7 @@ func save_highscore_if_better(score: float):
 
 func get_highscore(image: Image) -> float:
 	var data = str(image.data["data"])
-	#print(data)
 	if levels.has(data):
-		print("hej")
 		return levels[data]
 	return -1
 
@@ -51,9 +48,6 @@ func load_levels_if_exists():
 	if error == OK:
 		var json_data = json.data
 		levels = json_data
-		print("levels:")
-		print(levels)
-		print("-------------------------")
 
 func save():
 	var file = FileAccess.open(file_path, FileAccess.WRITE)
