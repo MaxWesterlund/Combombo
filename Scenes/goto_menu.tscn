@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d2vwpfbptr8yj"]
 
-[ext_resource type="Script" path="res://Scenes/gotoMenu.gd" id="1_mg47a"]
+[ext_resource type="Script" path="res://Scenes/goto_menu.gd" id="1_mg47a"]
 [ext_resource type="PackedScene" uid="uid://6ejmjpdq8ddv" path="res://Scenes/Menus/button.tscn" id="1_tjmj0"]
 
 [node name="GotoMenu" type="Node2D"]

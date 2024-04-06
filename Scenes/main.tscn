@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://Scenes/win_text.gd" id="6_sd38f"]
 [ext_resource type="PackedScene" uid="uid://b6r2p5bl20m6s" path="res://Scenes/main_camera.tscn" id="6_tlvpa"]
 [ext_resource type="PackedScene" uid="uid://dghx5qydsgaff" path="res://Scenes/detonate.tscn" id="7_if7sk"]
-[ext_resource type="PackedScene" uid="uid://d2vwpfbptr8yj" path="res://Scenes/gotoMenu.tscn" id="8_l2itw"]
+[ext_resource type="PackedScene" uid="uid://d2vwpfbptr8yj" path="res://Scenes/goto_menu.tscn" id="7_iri23"]
 [ext_resource type="PackedScene" uid="uid://c2jg35g8f8od1" path="res://Scenes/restart.tscn" id="9_1morj"]
 
 [node name="Main" type="Node2D"]
@@ -38,7 +38,7 @@ text = "you have won. but at what cost?"
 horizontal_alignment = 1
 script = ExtResource("6_sd38f")
 
-[node name="GotoMenu" parent="CanvasLayer" instance=ExtResource("8_l2itw")]
+[node name="GotoMenu" parent="CanvasLayer" instance=ExtResource("7_iri23")]
 position = Vector2(1108, 14)
 
 [node name="Detonate" parent="CanvasLayer" instance=ExtResource("7_if7sk")]

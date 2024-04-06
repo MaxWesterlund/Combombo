@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cislcta1suf12"]
+[gd_scene load_steps=9 format=3 uid="uid://cislcta1suf12"]
 
 [ext_resource type="Script" path="res://Scenes/Menus/level_select.gd" id="1_mj67a"]
 [ext_resource type="PackedScene" uid="uid://6ejmjpdq8ddv" path="res://Scenes/Menus/button.tscn" id="2_51guy"]
 [ext_resource type="FontFile" uid="uid://ucbily7xel7e" path="res://Fonts/5Recieptprint.ttf" id="2_fv18k"]
 [ext_resource type="Texture2D" uid="uid://cey6b7fwqmgn8" path="res://Sprites/text_field.png" id="4_uk2hr"]
+[ext_resource type="PackedScene" uid="uid://d2vwpfbptr8yj" path="res://Scenes/goto_menu.tscn" id="5_08ax8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t4noc"]
 
@@ -117,6 +118,9 @@ theme_override_styles/read_only = SubResource("StyleBoxEmpty_p7s7a")
 placeholder_text = "Folder Path"
 editable = false
 virtual_keyboard_enabled = false
+
+[node name="GotoMenu" parent="." instance=ExtResource("5_08ax8")]
+position = Vector2(1108, 14)
 
 [connection signal="pressed" from="Button" to="." method="on_add_custom_levels"]
 [connection signal="text_submitted" from="CenterContainer/TextureRect/LineEdit" to="." method="on_custom_folder_selected"]

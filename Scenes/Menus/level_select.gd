@@ -1,6 +1,7 @@
 extends Control
 
 var level_panel = preload("res://Scenes/Menus/level_panel.tscn")
+var menu_scene: PackedScene
 
 var format_exp = RegEx.new()
 var name_exp = RegEx.new()
@@ -10,6 +11,12 @@ func _ready():
 	format_exp.compile("[.]\\w+$")
 	name_exp.compile("^\\w+")
 	add_built_in_levels()
+	
+	menu_scene = load("res://Scenes/Menus/menu.tscn")
+	Events.goto_menu.connect(on_goto_menu)
+
+func on_goto_menu():
+	get_tree().change_scene_to_packed(menu_scene)
 
 func on_add_custom_levels():
 	var line_edit = get_node("CenterContainer/TextureRect/LineEdit")
