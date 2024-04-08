@@ -10,3 +10,7 @@
 extra:
 * download levels
 * more tiles
+
+problems:
+* kan inte vinna innan alla bomber sprängs
+* folk upplever bomb hotbar som skum
