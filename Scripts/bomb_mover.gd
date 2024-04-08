@@ -1,6 +1,6 @@
 extends Node2D
 
-var bomb = preload("res://Scenes/bombo.tscn")
+var bomb = load("res://Scenes/bombo.tscn")
 var bomb_moving: RigidBody2D = null
 var bomb_delta: Vector2
 
