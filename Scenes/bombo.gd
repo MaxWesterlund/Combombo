@@ -75,4 +75,5 @@ func on_animation_finished():
 
 func _on_input_event(_viewport, event: InputEvent, _shape_idx):
 	if event.is_action_pressed("pick_bomb"):
-		Events.bomb_press.emit(self)
+		if !Utils.is_mouse_over_ui(get_global_mouse_position()):
+			Events.bomb_press.emit(self)
