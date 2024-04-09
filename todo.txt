@@ -1,6 +1,7 @@
 * push bomb out of wall
 * bomb collider smaller (not for selecting)
 * player should be more predictable and deterministic (the same bombs should produce the same result)
+* add custom levels X to exit and ? should be more linked to the wood
 
 * backgrounds
 * fullscreen? resolution adapt (project settings)

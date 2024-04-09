@@ -20,7 +20,7 @@ func save_highscore_if_better(score: float):
 	var data = str(image.data["data"])
 	if not levels.has(data):
 		levels[data] = {"highscore": score}
-	elif score < levels[data]["highscore"]:
+	elif levels[data] is Dictionary and score < levels[data]["highscore"]:
 		levels[data]["highscore"] = score
 	save()
 
