@@ -26,7 +26,7 @@ func save_highscore_if_better(score: float):
 
 func get_highscore(image: Image) -> float:
 	var data = str(image.data["data"])
-	if levels.has(data) and levels[data].has("highscore"):
+	if levels.has(data) and levels[data] is Dictionary and levels[data].has("highscore"):
 		return levels[data]["highscore"]
 	return -1
 
@@ -67,7 +67,7 @@ func get_stored_custom_levels():
 	#print(levels)
 	for l in levels:
 		var arr = str_to_var(l)
-		if levels[l].has("is_custom") and levels[l]["is_custom"] == true:
+		if levels[l] is Dictionary and levels[l].has("is_custom") and levels[l]["is_custom"] == true:
 			var image = Image.create_from_data(levels[l]["width"], levels[l]["height"], false, Image.FORMAT_RGBA8, arr)
 			output.append({"image": image, "name": levels[l]["name"]})
 	#print("o")
