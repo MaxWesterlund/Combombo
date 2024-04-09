@@ -24,7 +24,7 @@ func set_explode_time_start(time: float):
 
 func _ready():
 	add_to_group("Bombs")
-	time_text.add_to_group("UI")
+	#time_text.add_to_group("UI")
 	Events.attack.connect(start_timer)
 	time_text.text = "%.1f" % explode_time
 	explosion.animation_finished.connect(on_animation_finished)
