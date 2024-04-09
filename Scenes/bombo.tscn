@@ -1,12 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://cesb20ykxb25l"]
+[gd_scene load_steps=14 format=3 uid="uid://cesb20ykxb25l"]
 
 [ext_resource type="Script" path="res://Scenes/bombo.gd" id="1_dqc76"]
 [ext_resource type="Texture2D" uid="uid://grtdbfxtxjhy" path="res://Sprites/dynamite.png" id="2_r4dto"]
 [ext_resource type="Texture2D" uid="uid://bj15w4fxlbbia" path="res://Sprites/explosion_2.png" id="3_s7ndk"]
 [ext_resource type="AudioStream" uid="uid://8c8fvr1ipm4s" path="res://Sound/explosion1.wav" id="4_6e0bp"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ymvyc"]
-size = Vector2(59.4778, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2gtga"]
 atlas = ExtResource("3_s7ndk")
@@ -58,6 +55,11 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_08je8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rj4xd"]
+size = Vector2(71.7152, 31.326)
+
 [node name="Bombo" type="RigidBody2D" groups=["Bombs"]]
 collision_layer = 4
 collision_mask = 2
@@ -82,11 +84,6 @@ offset_bottom = -18.0
 mouse_filter = 1
 text = "1...0"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1.26968, -0.303232)
-rotation = -0.279253
-shape = SubResource("RectangleShape2D_ymvyc")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
 position = Vector2(-5, -7)
@@ -97,5 +94,16 @@ animation = &"boom"
 stream = ExtResource("4_6e0bp")
 attenuation = 7.0
 
-[connection signal="input_event" from="." to="." method="_on_input_event"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_08je8")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1.53399, -0.0198569)
+rotation = -0.318387
+shape = SubResource("RectangleShape2D_rj4xd")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="input_event" from="Area2D" to="." method="_on_input_event"]
